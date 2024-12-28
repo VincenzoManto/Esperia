@@ -1,3 +1,52 @@
+# Esperia
+
+Esperia is a Progressive Web Application (PWA) designed to bring the latest news and updates from local shops directly to your device. Stay informed about new products, special offers, and events happening in your community.
+
+## Features
+
+- **Real-time Updates**: Get the latest news and updates from local shops as they happen.
+- **Offline Access**: Access news and updates even when you are offline.
+- **Push Notifications**: Receive notifications for important news and special offers.
+- **User-friendly Interface**: Enjoy a clean and intuitive interface designed for a seamless user experience.
+- **Local Focus**: Stay connected with your local community and support small businesses.
+
+## Installation
+
+To install Esperia on your device, follow these steps:
+
+1. Open the Esperia website in your browser.
+2. Tap the "Add to Home Screen" prompt.
+3. Follow the on-screen instructions to complete the installation.
+
+## Usage
+
+1. Open the Esperia app from your home screen.
+2. Browse the latest news and updates from local shops.
+3. Enable push notifications to stay informed about important news and offers.
+4. Use the search feature to find specific shops or news articles.
+
+## Contributing
+
+We welcome contributions from the community! If you would like to contribute to Esperia, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push them to your fork.
+4. Submit a pull request with a detailed description of your changes.
+
+## License
+
+Esperia is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For questions or feedback, please contact us at [support@esperia.com](mailto:support@esperia.com).
+
+
+--- 
+
+OLD
+
 # Ionic UI Templates
 
 This is Project's starting point.
