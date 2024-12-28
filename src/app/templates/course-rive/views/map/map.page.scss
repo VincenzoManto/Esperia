@@ -1,0 +1,21 @@
+ion-item,
+ion-list *,
+ion-list {
+  background: transparent !important;
+}
+::ng-deep {
+  .searchbar-input-container {
+    background: #fff3;
+    border-radius: 50px;
+  }
+}
+.wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.map-container {
+  flex-grow: 1;
+  width: 100%;
+}
