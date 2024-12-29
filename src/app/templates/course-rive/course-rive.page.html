@@ -15,16 +15,8 @@
 ></cr-store>
 
 <ion-content #mainContent>
-  <div class="home-tab-container" *ngIf="selectedTab.id === tabItems[0].id">
-    <cr-content-view></cr-content-view>
-  </div>
-
-  <div class="w-100 mt-5" *ngIf="selectedTab.id === tabItems[1].id">
-    <cr-search></cr-search>
-  </div>
-
-  <div class="w-100 mt-5 h-100" *ngIf="selectedTab.id === tabItems[2].id">
-    <cr-map></cr-map>
+  <div class="mt-5 pt-2">
+    <router-outlet></router-outlet>
   </div>
 </ion-content>
 

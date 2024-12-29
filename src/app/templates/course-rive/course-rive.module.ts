@@ -13,8 +13,6 @@ import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
 import { StorePageModule } from './views/store/store.module';
-import { SearchPage } from './views/search/search.page';
-import { MapPage } from './views/map/map.page';
 
 @NgModule({
   imports: [
@@ -28,8 +26,6 @@ import { MapPage } from './views/map/map.page';
   ],
   declarations: [
     CourseRivePage,
-    SearchPage,
-    MapPage,
     SideMenuComponent,
     MenuRowComponent,
     BottomTabBarComponent,

@@ -8,6 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: CourseRivePage,
+    loadChildren: () =>
+      import('./views/content-view/content-view.module').then(
+        (m) => m.ContentViewPageModule
+      ),
   },
   {
     path: 'on-boarding',
@@ -23,13 +27,17 @@ const routes: Routes = [
         (m) => m.StorePageModule
       ),
   },
-  {
+/*   {
     path: 'content-view',
     loadChildren: () =>
       import('./views/content-view/content-view.module').then(
         (m) => m.ContentViewPageModule
       ),
-  },
+  }, */
+/*   {
+    path: ':path',
+    component: CourseRivePage,
+  } */
 ];
 
 @NgModule({

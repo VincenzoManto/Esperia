@@ -1,5 +1,7 @@
 <div class="p-2">
-  <ion-text class="courses-list-title title font-largeTitle">Esperia</ion-text>
+  <ion-text class="courses-list-title title font-largeTitle text-center w-100 d-block"
+    >Search</ion-text
+  >
   <ion-searchbar
     placeholder="Search courses"
     (ionInput)="search($event)"
@@ -19,8 +21,18 @@
   </ion-list>
 
   <h3 *ngIf="!(news.length + stores.length)" class="text-center mt-2">
-    <ion-img class="m-auto mb-2" src="https://ouch-cdn2.icons8.com/-iQqxrxT61dfH3LPTMZXI-n9cbeEau7XAB2Yg5iFLTM/rs:fit:368:337/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTY5/L2EyZDkzYzk4LTli/MjgtNGExNC1iODU1/LTNiZDA0YThkNDVk/YS5wbmc.png" style="width: 50vw"></ion-img>
-    <ion-img src="https://img.icons8.com/?size=24&id=89144&format=png" class="icon"></ion-img>
-    <ion-text>Such empty, much wow!</ion-text>
+    <ion-img
+      class="m-auto mb-2"
+      src="https://ouch-cdn2.icons8.com/-iQqxrxT61dfH3LPTMZXI-n9cbeEau7XAB2Yg5iFLTM/rs:fit:368:337/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTY5/L2EyZDkzYzk4LTli/MjgtNGExNC1iODU1/LTNiZDA0YThkNDVk/YS5wbmc.png"
+      style="width: 50vw"
+    ></ion-img>
+    <ion-text class="font-body">
+      <ion-img
+        src="https://img.icons8.com/?size=24&id=89144&format=png"
+        class="icon"
+      ></ion-img>
+
+      Such empty, much wow!</ion-text
+    >
   </h3>
 </div>

@@ -11,6 +11,8 @@ import { ShuffleArrayPipe } from '../../helper/shuffle-array/shuffle-array.pipe'
 import { RiveModule } from 'ng-rive';
 import { NewsCardComponent } from '../../navigation/news-card/news-card.component';
 import { StoreCardComponent } from '../../navigation/store-card/store-card.component';
+import { SearchPage } from '../search/search.page';
+import { MapPage } from '../map/map.page';
 
 @NgModule({
   imports: [
@@ -23,6 +25,8 @@ import { StoreCardComponent } from '../../navigation/store-card/store-card.compo
   exports: [ContentViewPage, StoreCardComponent, NewsCardComponent],
   declarations: [
     ContentViewPage,
+    SearchPage,
+    MapPage,
     ShuffleArrayPipe,
     StoreCardComponent,
     NewsCardComponent,

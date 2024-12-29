@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { News } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppService } from '../../../../services/app.service';
+import { RiveSMInput } from 'ng-rive';
 
 @Component({
   selector: 'cr-news-card',
@@ -24,7 +25,7 @@ import { AppService } from '../../../../services/app.service';
       </ion-row>
       <hr />
       <ion-row class="ion-justify-content-between">
-        <ion-col size="auto" (click)="like(section)">
+        <ion-col size="auto" class="position-relative" (click)="like(section, triggerConfetti)">
           <ion-img
             [src]="
               section.liked
@@ -33,6 +34,14 @@ import { AppService } from '../../../../services/app.service';
             "
             class="icon"
           ></ion-img>
+          <canvas class="rive-confetti center" riv="confetti" width="200" height="200">
+            <riv-state-machine name="State Machine 1" play>
+              <riv-input
+                #triggerConfetti="rivInput"
+                name="Trigger explosion"
+              ></riv-input>
+            </riv-state-machine>
+          </canvas>
           <ion-text class="font-body">{{ section.likes || 0 }}</ion-text>
         </ion-col>
         <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
@@ -60,11 +69,12 @@ export class NewsCardComponent {
   constructor(private appService: AppService, private db: AngularFireDatabase) {}
 
 
-  like(section: News) {
+  like(section: News, triggerConfetti: RiveSMInput) {
     if (section.liked) {
       section.likes--;
     } else {
       section.likes++;
+      triggerConfetti.fire();
     }
     section.liked = !section.liked || false;
     this.save.emit(section);

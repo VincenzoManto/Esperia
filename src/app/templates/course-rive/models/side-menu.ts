@@ -4,11 +4,13 @@ export interface MenuItem {
   artboard: string;
   status: boolean;
   show: boolean;
+  url?: string;
 }
 
 export const menuItemsList: MenuItem[] = [
   {
     id: 'Home',
+    url: '/',
     stateMachine: 'HOME_interactivity',
     artboard: 'HOME',
     status: false,
@@ -16,6 +18,7 @@ export const menuItemsList: MenuItem[] = [
   },
   {
     id: 'Search',
+    url: '/search',
     stateMachine: 'SEARCH_Interactivity',
     artboard: 'SEARCH',
     status: false,
@@ -23,6 +26,7 @@ export const menuItemsList: MenuItem[] = [
   },
   {
     id: 'Favorites',
+    url: '/map',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
     status: false,
@@ -30,6 +34,7 @@ export const menuItemsList: MenuItem[] = [
   },
   {
     id: 'Help',
+    url: '/notifications',
     stateMachine: 'CHAT_Interactivity',
     artboard: 'CHAT',
     status: false,

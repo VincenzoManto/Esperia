@@ -12,6 +12,7 @@ import {
   menuItems3List,
   menuItemsList,
 } from '../../models/side-menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-side-menu',
@@ -34,7 +35,8 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private animationCtrl: AnimationController,
     private navigation: NavController,
-    public platform: Platform
+    public platform: Platform,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -67,6 +69,8 @@ export class SideMenuComponent implements OnInit {
     const menu1RefArray = this.menuItems1Ref?.toArray();
     const menu2RefArray = this.menuItems2Ref?.toArray();
     menu2RefArray && menu1RefArray?.push(...menu2RefArray);
+
+    this.router.navigateByUrl(menu.url!);
 
     for (let i = 0; i < menu1RefArray?.length!; i++) {
       const itemRef = menu1RefArray?.[i];

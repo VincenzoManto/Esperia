@@ -4,6 +4,7 @@ import { AnimationController } from '@ionic/angular';
 import { tabItemsList } from './models/tabs';
 import { AppService } from '../../services/app.service';
 import { Store } from './models/course';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cr-course-rive',
@@ -33,7 +34,13 @@ export class CourseRivePage implements OnInit {
   avatarArr = [1, 2, 3];
   selectedStore?: Store;
 
-  constructor(public animationCtrl: AnimationController, private appService: AppService) {}
+  constructor(public animationCtrl: AnimationController, private appService: AppService, public activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      if (params.has('path')) {
+        this.selectedTab = tabItemsList.find((e) => e.url === params.get('path')) || tabItemsList[0];
+      }
+    });
+  }
 
   ngOnInit(): void {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",

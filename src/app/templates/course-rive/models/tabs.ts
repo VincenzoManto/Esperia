@@ -4,14 +4,16 @@ export interface BottomTabItem {
   artboard: string;
   status: boolean;
   show: boolean;
+  url: string;
 }
 
 export const tabItemsList: BottomTabItem[] = [
   {
-    id: 'tab_chat',
-    stateMachine: 'CHAT_Interactivity',
-    artboard: 'CHAT',
+    id: 'tab_home',
+    stateMachine: 'HOME_Interactivity',
+    artboard: 'HOME',
     status: false,
+    url: '',
     show: false,
   },
   {
@@ -19,13 +21,15 @@ export const tabItemsList: BottomTabItem[] = [
     stateMachine: 'SEARCH_Interactivity',
     artboard: 'SEARCH',
     status: false,
+    url: 'search',
     show: false,
   },
   {
     id: 'tab_timer',
-    stateMachine: 'TIMER_Interactivity',
-    artboard: 'TIMER',
+    stateMachine: 'MAP_Interactivity',
+    artboard: 'MARKER',
     status: false,
+    url: 'map',
     show: false,
   },
   {
@@ -33,6 +37,7 @@ export const tabItemsList: BottomTabItem[] = [
     stateMachine: 'BELL_Interactivity',
     artboard: 'BELL',
     status: false,
+    url: 'notifications',
     show: false,
   },
   {
@@ -40,6 +45,7 @@ export const tabItemsList: BottomTabItem[] = [
     stateMachine: 'USER_Interactivity',
     artboard: 'USER',
     status: false,
+    url: 'profile',
     show: false,
   },
 ];
