@@ -30,3 +30,21 @@
     z-index: 1;
   }
 }
+
+
+
+ion-img {
+  height: 100%;
+  mix-blend-mode: lighten;
+  filter: invert(1) hue-rotate(25deg);
+}
+
+ion-img.p1 {
+  padding: 4px;
+}
+
+
+ion-img.selected {
+  filter: none;
+  mix-blend-mode: multiply;
+}

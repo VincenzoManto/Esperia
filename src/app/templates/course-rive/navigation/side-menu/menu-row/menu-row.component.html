@@ -5,9 +5,22 @@
     [style.width.px]="menu.id === 'Home' ? 272 : 0"
   ></div>
 
-  <ion-row class="menu-btn-container" (click)="onPress.emit()">
+  <ion-row
+    class="menu-btn-container"
+    (click)="onPress.emit()"
+    *ngIf="{ f: 'png' } as format"
+    (mouseenter)="format.f = 'gif'"
+    (mouseleave)="format.f = 'png'"
+  >
     <div class="icon-container">
-      <canvas
+      <ion-img
+        class="p1"
+        [class.selected]="menu.isSelected"
+        src="https://img.icons8.com/?size=48&id={{ menu.icon }}&format={{
+          menu.isSelected ? 'gif' : format.f
+        }}"
+      ></ion-img>
+      <!-- <canvas
         riv="icons"
         [artboard]="menu.artboard"
         width="32"
@@ -17,7 +30,7 @@
         <riv-state-machine [name]="menu.stateMachine" play>
           <riv-input name="active" [value]="menu.status"></riv-input>
         </riv-state-machine>
-      </canvas>
+      </canvas> -->
     </div>
     <ion-text class="font-headline">{{ menu.id }}</ion-text>
   </ion-row>

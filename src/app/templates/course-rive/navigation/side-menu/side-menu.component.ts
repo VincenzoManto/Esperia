@@ -64,7 +64,10 @@ export class SideMenuComponent implements OnInit {
     setTimeout(() => {
       menu.status = false;
     }, 1000);
+    this.selectedMenu.isSelected = false;
+
     this.selectedMenu = menu;
+    this.selectedMenu.isSelected = true;
 
     const menu1RefArray = this.menuItems1Ref?.toArray();
     const menu2RefArray = this.menuItems2Ref?.toArray();

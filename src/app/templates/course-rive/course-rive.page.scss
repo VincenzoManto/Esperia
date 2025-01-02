@@ -107,3 +107,9 @@ cr-on-boarding, cr-store {
     text-transform: capitalize;
   }
 }
+
+
+::ng-deep cr-map {
+  height: 100%;
+  display: block;
+}
