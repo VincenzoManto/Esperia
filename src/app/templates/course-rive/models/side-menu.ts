@@ -30,7 +30,7 @@ export const menuItemsList: MenuItem[] = [
   },
   {
     id: 'Favorites',
-    url: '/notifications',
+    url: '/topics',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
     icon: '3JTKO1zC9ECD',

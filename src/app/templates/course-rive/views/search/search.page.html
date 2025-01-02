@@ -6,13 +6,13 @@
     placeholder="Search courses"
     (ionInput)="search($event)"
   ></ion-searchbar>
-  <h3 *ngIf="stores.length">Stores</h3>
+  <ion-text class="font-title text-center d-block w-100" *ngIf="stores.length">Stores</ion-text>
   <ion-list>
     <ion-item *ngFor="let store of stores" class="bg-transparent">
       <cr-store-card class="w-100" [section]="store"></cr-store-card>
     </ion-item>
   </ion-list>
-  <h3 *ngIf="news.length">News</h3>
+  <ion-text class="font-title text-center d-block w-100" *ngIf="news.length">News</ion-text>
 
   <ion-list>
     <ion-item *ngFor="let news of news" class="bg-transparent">

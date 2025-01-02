@@ -1,0 +1,48 @@
+<div class="p-2">
+
+  <div class="courses-list row" *ngIf="!selectedTopic">
+    <ion-text
+      class="courses-list-title title font-largeTitle text-center col-12"
+      >Topics</ion-text
+    >
+    <div
+      class="course-container col-11 col-lg-12 cursor-pointer"
+      (click)="clickForSearch(topic.key)"
+      *ngFor="let topic of topics | keyvalue"
+    >
+      <ion-img class="course-img" [src]="icons[topic.key]"></ion-img>
+
+      <ion-text class="course-title font-title2 text-capitalize"
+        >{{topic.key}}</ion-text
+      >
+      <ion-text class="course-subtitle font-subtitle">
+        {{topic.value}}
+      </ion-text>
+    </div>
+  </div>
+
+  <ng-container *ngIf="selectedTopic">
+    <ion-text class="font-title text-center d-block w-100" (click)="selectedTopic = undefined">
+      &#x2190; Back
+    </ion-text>
+    <div class="courses-list">
+      <div class="course-container">
+        <ion-img class="course-img" [src]="icons[selectedTopic]"></ion-img>
+
+        <ion-text class="course-title font-title2 text-capitalize"
+          >{{selectedTopic}}</ion-text
+        >
+      </div>
+    </div>
+
+    <ion-text class="font-title text-center d-block w-100" *ngIf="news.length"
+      >News</ion-text
+    >
+
+    <ion-list>
+      <ion-item *ngFor="let news of news" class="bg-transparent">
+        <cr-news-card class="w-100" [section]="news"></cr-news-card>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+</div>

@@ -1,3 +1,19 @@
+::ng-deep {
+  ion-item,
+  ion-list *,
+  ion-list,
+  .item-native {
+    --ion-item-background: transparent;
+    --ion-item-border-color: transparent;
+    background: transparent !important;
+  }
+  .searchbar-input-container {
+    background: #fff3;
+    border-radius: 50px;
+  }
+}
+
+
 .courses-list-title {
   padding: 0px 20px;
 }
@@ -7,8 +23,6 @@
 }
 
 .courses-list {
-  display: flex;
-  flex-wrap: nowrap;
   gap: 2rem;
   overflow-x: auto;
   padding: 20px;
@@ -20,24 +34,19 @@
 
   .course-container {
     background: #222 !important;
-    /* border: 1px solid #fff; */
     color: white;
     margin-bottom: 10px;
     box-shadow: 0 0 20px #0005;
     border-radius: 30px;
     padding: 10px 30px;
-    width: 260px;
 
     position: relative;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
     padding: 30px;
     border-radius: 30px;
     color: white;
 
     .course-img {
-      width: 140px;
+      width: 100px;
       aspect-ratio: 1;
       position: absolute;
       top: -25px;
@@ -67,23 +76,8 @@
       flex: 1;
     }
 
-    ion-row.avatar-container {
-      ion-img {
-        width: 44px;
-        height: 44px;
-        border-radius: 22px;
-        overflow: hidden;
-      }
-      // item spacing
-      ion-img + ion-img {
-        margin-left: 8px;
-      }
-    }
   }
 
-  .course-container + .course-container {
-    margin-left: 20px;
-  }
 }
 
 .text-muted {

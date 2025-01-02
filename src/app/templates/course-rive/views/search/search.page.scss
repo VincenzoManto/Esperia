@@ -1,9 +1,12 @@
-ion-item,
-ion-list *,
-ion-list {
-  background: transparent !important;
-}
 ::ng-deep {
+  ion-item,
+  ion-list *,
+  ion-list,
+  .item-native {
+    --ion-item-background: transparent;
+    --ion-item-border-color: transparent;
+    background: transparent !important;
+  }
   .searchbar-input-container {
     background: #fff3;
     border-radius: 50px;

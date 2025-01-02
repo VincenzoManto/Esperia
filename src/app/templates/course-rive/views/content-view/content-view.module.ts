@@ -13,6 +13,7 @@ import { NewsCardComponent } from '../../navigation/news-card/news-card.componen
 import { StoreCardComponent } from '../../navigation/store-card/store-card.component';
 import { SearchPage } from '../search/search.page';
 import { MapPage } from '../map/map.page';
+import { TopicsPage } from '../topics/topics.page';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { MapPage } from '../map/map.page';
   declarations: [
     ContentViewPage,
     SearchPage,
+    TopicsPage,
     MapPage,
     ShuffleArrayPipe,
     StoreCardComponent,

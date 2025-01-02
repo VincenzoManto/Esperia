@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { News } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppService } from '../../../../services/app.service';
@@ -61,13 +61,19 @@ import { RiveSMInput } from 'ng-rive';
   `,
   styleUrls: ['./news-card.component.scss'],
 })
-export class NewsCardComponent {
+export class NewsCardComponent implements AfterViewInit {
   @Input() section?: News;
   @Output() save = new EventEmitter<News>();
   // Add your component logic here
 
   constructor(private appService: AppService, private db: AngularFireDatabase) {}
 
+  ngAfterViewInit() {
+    if (this.section && !this.section?.liked) {
+      const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+      this.section.liked = likes.includes(this.section.idx);
+    }
+  }
 
   like(section: News, triggerConfetti: RiveSMInput) {
     if (section.liked) {

@@ -44,7 +44,7 @@ export const tabItemsList: BottomTabItem[] = [
     artboard: 'LIKE/STAR',
     icon: 'qAlkcUQZ981v',
     status: false,
-    url: 'notifications',
+    url: 'topics',
     show: false,
   },
   {

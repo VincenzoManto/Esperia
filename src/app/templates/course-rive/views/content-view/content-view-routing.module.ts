@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContentViewPage } from './content-view.page';
 import { SearchPage } from '../search/search.page';
 import { MapPage } from '../map/map.page';
+import { TopicsPage } from '../topics/topics.page';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'map',
     component: MapPage
+  },
+  {
+    path: 'topics',
+    component: TopicsPage
   }
 ];
 

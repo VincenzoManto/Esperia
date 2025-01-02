@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { coursesList, News } from '../../models/course';
+import { coursesList, News, typesIcons } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { AppService } from '../../../../services/app.service';
@@ -14,6 +14,7 @@ export class ContentViewPage implements OnInit {
   courses = coursesList;
   courseSections: News[] = [];
   news$: Observable<any[]>;
+  icons = typesIcons as any;
 
   constructor(private db: AngularFireDatabase, private appService: AppService, public animationCtrl: AnimationController) {
     const likes = JSON.parse(localStorage.getItem('likes') || '[]');
