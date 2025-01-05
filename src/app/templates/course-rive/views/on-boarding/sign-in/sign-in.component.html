@@ -1,7 +1,7 @@
 <div class="gradient-border">
   <div class="sign-in-container">
     <ion-text class="font-largeTitle">Sign in</ion-text>
-    <ion-text class="font-headline subtitle">
+    <!-- <ion-text class="font-headline subtitle">
       <p>
         Access to 240+ hours of content. Learn design and code, by building real
         apps with React and Swift.
@@ -29,8 +29,20 @@
       <ion-img src="assets/course_rive/icon_lock.svg"></ion-img>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
-
+ -->
     <ion-button
+      class="sign-in-button font-headline"
+      expand="block"
+      type="submit"
+      (click)="
+        fb(triggerSuccess, triggerError, triggerReset, triggerConfetti)
+      "
+    >
+      <ion-icon class="icon" name="facebook"></ion-icon>
+      Facebook
+    </ion-button>
+
+    <!-- <ion-button
       class="sign-in-button font-headline"
       expand="block"
       type="submit"
@@ -55,7 +67,7 @@
       <ion-img src="assets/course_rive/logos/logo_email.svg"></ion-img>
       <ion-img src="assets/course_rive/logos/logo_apple.svg"></ion-img>
       <ion-img src="assets/course_rive/logos/logo_google.svg"></ion-img>
-    </ion-row>
+    </ion-row> -->
 
     <div class="close-container">
       <ion-button (click)="onSignInClose()">

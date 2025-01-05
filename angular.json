@@ -92,7 +92,16 @@
               "progress": false
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+
+            "ssl": true,
+
+            "sslKey": "ssl/localhost_4200.key",
+
+            "sslCert": "ssl/localhost_4200.crt"
+
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

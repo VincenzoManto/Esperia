@@ -42,7 +42,7 @@ export const tabItemsList: BottomTabItem[] = [
     id: 'tab_bell',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
-    icon: 'qAlkcUQZ981v',
+    icon: '3JTKO1zC9ECD',
     status: false,
     url: 'topics',
     show: false,

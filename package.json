@@ -34,6 +34,7 @@
     "@capacitor/keyboard": "6.0.0",
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.2.2",
+    "firebase": "^9.16.0",
     "fuse.js": "^7.0.0",
     "ionicons": "^7.0.0",
     "light-release": "^2.4.2",

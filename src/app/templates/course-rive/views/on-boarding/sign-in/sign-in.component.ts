@@ -1,5 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { RiveSMInput } from 'ng-rive';
+import { GoogleAuthProvider, FacebookAuthProvider, getAuth, signInWithPopup } from '@firebase/auth';
+import { initializeApp } from '@firebase/app';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'cr-sign-in',
@@ -13,7 +17,7 @@ export class SignInComponent implements OnInit {
   password = '';
   isLoading = false;
 
-  constructor() {}
+  constructor(private auth: AngularFireAuth) {}
 
   ngOnInit() {}
 
@@ -46,5 +50,53 @@ export class SignInComponent implements OnInit {
 
   onSignInClose() {
     this.onClose.emit();
+  }
+
+  fb(
+    success: RiveSMInput,
+    failure: RiveSMInput,
+    reset: RiveSMInput,
+    confetti: RiveSMInput
+  ) {
+    this.isLoading = true;
+
+
+    this.auth.onAuthStateChanged(function(user) {
+      console.log(user);
+      if (user) {
+
+        // User is signed in.
+      } else {
+        // No user is signed in.
+      }
+    });
+    const app = initializeApp(environment.firebaseConfig)
+    const auth = getAuth(app)
+    signInWithPopup(auth, new FacebookAuthProvider() as any)
+      .then((result) => {
+        console.log(result);
+        success?.fire();
+        fetch('https://graph.facebook.com/v17.0/me/accounts', {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + result.user.getIdToken(),
+          }
+        }).then(response => response.json()).then(data => {
+          console.log(data);
+        })
+        setTimeout(() => {
+          this.isLoading = false;
+          reset?.fire();
+          confetti?.fire();
+          this.onSignInClose();
+        }, 3000);
+      })
+      .catch((error) => {
+        failure?.fire();
+        setTimeout(() => {
+          this.isLoading = false;
+          reset?.fire();
+        }, 3000);
+      });
   }
 }

@@ -50,6 +50,12 @@ import { RiveSMInput } from 'ng-rive';
             class="icon"
           ></ion-img>
         </ion-col>
+        <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
+          <ion-img
+            [src]="'https://img.icons8.com/plumpy/24/bookmark-ribbon--v1.png'"
+            class="icon"
+          ></ion-img>
+        </ion-col>
         <ion-col size="auto">
           <ion-img
             [src]="'https://img.icons8.com/material-two-tone/24/qr-code.png'"

@@ -15,7 +15,8 @@ import { Messaging, onMessage } from '@angular/fire/messaging';
 import { BehaviorSubject } from 'rxjs';
 import { PushNotificationService } from './services/push-notification.service';
 import { SwUpdate, SwPush } from '@angular/service-worker';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { setPersistence, browserLocalPersistence, inMemoryPersistence, getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
   constructor(private platform: Platform, private db: AngularFireDatabase, private appService: AppService,
     private swUpdate: SwUpdate,
     private swPush: SwPush,
+    private afAuth: AngularFireAuth,
     private pushService: PushNotificationService,
     private notificationService: NotificationService,
   ) {
@@ -46,6 +48,11 @@ export class AppComponent implements OnInit {
         App.exitApp();
       }
     });
+
+    this.afAuth.app.then(async (e) => {
+
+      await setPersistence(getAuth(e), browserLocalPersistence);
+    });
   }
 
   ngOnInit() {
@@ -54,3 +61,4 @@ export class AppComponent implements OnInit {
 
 
 }
+
