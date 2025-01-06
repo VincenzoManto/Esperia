@@ -11,12 +11,12 @@ export const typesIcons = {
     'https://cdn3d.iconscout.com/3d/premium/thumb/travel-destination-3d-icon-download-in-png-blend-fbx-gltf-file-formats--tourist-location-beach-island-pack-holidays-icons-5410375.png?f=webp',
   sport:
     'https://cdn3d.iconscout.com/3d/premium/thumb/sports-equipment-3d-icon-download-in-png-blend-fbx-gltf-file-formats--sport-ball-basketball-rugby-badminton-racket-education-pack-school-icons-3342374.png?f=webp',
-  music:
-    'https://cdn3d.iconscout.com/3d/premium/thumb/music-notes-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--beats-audio-pack-equipment-illustrations-4596468.png',
-  art: 'https://cdn3d.iconscout.com/3d/premium/thumb/art-3d-icon-download-in-png-blend-fbx-gltf-file-formats--drawing-paint-painting-education-pack-e-learning-icons-7322717.png?f=webp',
-  business: 'https://cdn3d.iconscout.com/3d/premium/thumb/business-goal-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--target-investment-career-pack-illustrations-3010228.png?f=webp',
-  school:
+
+  entertainment: 'https://cdn3d.iconscout.com/3d/premium/thumb/art-3d-icon-download-in-png-blend-fbx-gltf-file-formats--drawing-paint-painting-education-pack-e-learning-icons-7322717.png?f=webp',
+  job: 'https://cdn3d.iconscout.com/3d/premium/thumb/business-goal-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--target-investment-career-pack-illustrations-3010228.png?f=webp',
+  education:
     'https://cdn3d.iconscout.com/3d/premium/thumb/school-chair-3d-icon-download-in-png-blend-fbx-gltf-file-formats--student-seat-furniture-education-pack-icons-4884509.png',
+    health: 'https://cdn3d.iconscout.com/3d/premium/thumb/healthcare-3d-icon-download-in-png-blend-fbx-gltf-file-formats--medical-hospital-doctor-nurse-pack-icons-4884509.png',
 };
 
 export const coursesList: News[] = [
@@ -62,16 +62,6 @@ export const coursesList: News[] = [
     topics: ['games'],
   },
   {
-    title: "Valentine's Day Special",
-    time: new Date('2023-02-14T09:00:00'),
-    color: '#FF33A1',
-    caption: 'Celebrate love with special offers!',
-    image: 'assets/course_rive/topic_5.svg',
-    idx: 4,
-    likes: 0,
-    topics: ['love'],
-  },
-  {
     title: 'Christmas Wonderland',
     time: new Date('2023-12-25T10:00:00'),
     color: '#33FFF5',
@@ -109,17 +99,7 @@ export const coursesList: News[] = [
     image: 'assets/course_rive/topic_9.svg',
     idx: 8,
     likes: 0,
-    topics: ['music'],
-  },
-  {
-    title: 'Art Exhibition',
-    time: new Date('2023-07-25T10:00:00'),
-    color: '#FF5733',
-    caption: 'Discover amazing artworks!',
-    image: 'assets/course_rive/topic_10.svg',
-    idx: 9,
-    likes: 0,
-    topics: ['art'],
+    topics: ['entertainment'],
   },
   {
     title: 'Back to School Sale',
@@ -129,7 +109,7 @@ export const coursesList: News[] = [
     image: 'assets/course_rive/topic_11.svg',
     idx: 10,
     likes: 0,
-    topics: ['school'],
+    topics: ['education'],
   },
 ];
 

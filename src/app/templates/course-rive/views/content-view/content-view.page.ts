@@ -18,9 +18,9 @@ export class ContentViewPage implements OnInit {
 
   constructor(private db: AngularFireDatabase, private appService: AppService, public animationCtrl: AnimationController) {
     const likes = JSON.parse(localStorage.getItem('likes') || '[]');
-    this.news$ = this.db.list('/news').valueChanges();
+    this.news$ = this.db.list('/news', (ref) => ref.orderByChild('time').limitToLast(5)).valueChanges();
     const sub = this.news$.subscribe((data) => {
-      this.courseSections = data;
+      this.courseSections = data.sort((a, b) => a.time > b.time ? -1 : 1);
       const stores = this.appService.stores;
       this.courseSections.forEach(e => {
         if (e.store !== undefined) {

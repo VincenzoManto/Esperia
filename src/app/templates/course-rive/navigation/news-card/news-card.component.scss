@@ -17,7 +17,7 @@ ion-col {
   margin-bottom: 10px;
   box-shadow: 0 0 20px #0005;
   border-radius: 30px;
-  padding: 10px 30px;
+  padding: 1rem 1.5rem;
 
   ion-col {
     --ion-grid-column-padding: 0px;
@@ -29,11 +29,23 @@ ion-col {
   .section-img {
     width: 48px;
     height: 50px;
-    object-fit: contain;
+    overflow: hidden;
+    ::ng-deep img {
+      object-fit: contain;
+    }
     padding: 2px;
-    border-radius: 10px;
+    border-radius: 50%;
     background: #fff;
     margin-left: 20px;
+  }
+
+  .img {
+    width: calc(100% + 1rem);
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    object-fit: cover;
+    margin: 0 -0.5rem 1rem -0.5rem;
   }
 }
 
@@ -49,10 +61,21 @@ ion-col {
 }
 
 .collapsable {
-  transition: all 0.7s;
+  transition: all 1s;
   max-height: 1lh;
   display: block;
+  position: relative;
+  padding-right: 10px;
   overflow: hidden;
+  &:after {
+    content: "...";
+    display: block;
+    position: absolute;
+    top: 0.2lh;
+    right: 0;
+    font-size: small;
+    color: var(--bs-secondary);
+  }
   &.opened {
     max-height: 50lh;
     overflow-y: auto;

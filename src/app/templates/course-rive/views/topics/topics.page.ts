@@ -23,12 +23,13 @@ export class TopicsPage {
     travel: 'Travel around the world: discover new places and cultures',
     music: 'Music is the best way to relax: listen to the best songs',
     fashion: 'Fashion is a way of life: dress to impress',
-    art: 'Art is the best way to express yourself: create and enjoy',
-    school: 'School is the best place to learn: study and get good grades',
+    entertainment: 'Entertainment is fun: watch movies and TV shows',
+    education: 'Education is the key to success: learn and grow',
     games: 'Games are fun: play and enjoy',
     tech: 'Tech is the future: learn how to code and create',
     love: 'Love is in the air: find your soulmate and be happy',
-    business: 'Business is the key to success: learn how to make money',
+    job: 'Business is the key to success: learn how to make money',
+    health: 'Health is wealth: take care of your body and mind',
     xmas: 'Christmas is the best time of the year: enjoy the holidays',
 
   }
