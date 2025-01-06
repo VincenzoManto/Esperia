@@ -3,18 +3,17 @@ import { News } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppService } from '../../../../services/app.service';
 import { RiveSMInput } from 'ng-rive';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'cr-news-card',
   template: `
     <div class="section-container" *ngIf="section">
-      <ion-row *ngIf="section">
+      <ion-row *ngIf="section" (click)="opened = !opened">
         <ion-col>
-          <ion-text class="font-title2">{{ section.title }}</ion-text>
-          <br />
+          <ion-text class="font-title3 open-status" [class.opened]="opened">{{ section.title }}</ion-text>
           <div class="spacing"></div>
-          <ion-text class="font-body">{{ section.caption }}</ion-text>
-          <br />
+          <ion-text class="font-body collapsable" [class.opened]="opened">{{ section.caption }}</ion-text>
           <small class="opacity-50">{{
             section.time | date : 'dd MMMM yyyy'
           }}</small>
@@ -23,7 +22,6 @@ import { RiveSMInput } from 'ng-rive';
           <ion-img class="section-img" [src]="section.storeNavigation?.logo || section.image"></ion-img>
         </ion-col>
       </ion-row>
-      <hr />
       <ion-row class="ion-justify-content-between">
         <ion-col size="auto" class="position-relative" (click)="like(section, triggerConfetti)">
           <ion-img
@@ -70,6 +68,7 @@ import { RiveSMInput } from 'ng-rive';
 export class NewsCardComponent implements AfterViewInit {
   @Input() section?: News;
   @Output() save = new EventEmitter<News>();
+  opened = false;
   // Add your component logic here
 
   constructor(private appService: AppService, private db: AngularFireDatabase) {}

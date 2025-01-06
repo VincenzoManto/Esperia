@@ -20,7 +20,6 @@ import { IonModal } from '@ionic/angular/common';
           <ion-img class="section-img" [src]="section.logo"></ion-img>
         </ion-col>
       </ion-row>
-      <hr />
       <ion-row class="ion-justify-content-between">
         <ion-col size="auto">
           <ion-img
