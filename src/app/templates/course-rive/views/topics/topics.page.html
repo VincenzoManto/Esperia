@@ -1,5 +1,4 @@
 <div class="p-2">
-
   <div class="courses-list row" *ngIf="!selectedTopic">
     <ion-text
       class="courses-list-title title font-largeTitle text-center col-12"
@@ -7,22 +6,55 @@
     >
     <div
       class="course-container col-11 col-lg-12 cursor-pointer"
-      (click)="clickForSearch(topic.key)"
       *ngFor="let topic of topics | keyvalue"
     >
-      <ion-img class="course-img" [src]="icons[topic.key]"></ion-img>
+      <div (click)="clickForSearch(topic.key)">
+        <ion-img class="course-img" [src]="icons[topic.key]"></ion-img>
 
-      <ion-text class="course-title font-title2 text-capitalize"
-        >{{topic.key}}</ion-text
-      >
-      <ion-text class="course-subtitle font-subtitle">
-        {{topic.value}}
-      </ion-text>
+        <ion-text class="course-title font-title2 text-capitalize"
+          >{{topic.key}}</ion-text
+        >
+        <ion-text class="course-subtitle font-subtitle">
+          {{topic.value}}
+        </ion-text>
+      </div>
+      <ion-row class="ion-justify-content-between">
+        <ion-col
+          size="auto"
+          class="position-relative"
+          (click)="subscribe(topic.key, triggerConfetti)"
+        >
+          <ion-img
+            [src]="
+              subscribed.includes(topic.key)
+                ? 'https://img.icons8.com/material-sharp/24/bell.png'
+                : 'https://img.icons8.com/material-two-tone/48/bell.png'
+            "
+            class="icon"
+          ></ion-img>
+          <canvas
+            class="rive-confetti center"
+            riv="confetti"
+            width="200"
+            height="200"
+          >
+            <riv-state-machine name="State Machine 1" play>
+              <riv-input
+                #triggerConfetti="rivInput"
+                name="Trigger explosion"
+              ></riv-input>
+            </riv-state-machine>
+          </canvas>
+        </ion-col>
+      </ion-row>
     </div>
   </div>
 
   <ng-container *ngIf="selectedTopic">
-    <ion-text class="font-title text-center d-block w-100" (click)="selectedTopic = undefined">
+    <ion-text
+      class="font-title text-center d-block w-100"
+      (click)="selectedTopic = undefined"
+    >
       &#x2190; Back
     </ion-text>
     <div class="courses-list">

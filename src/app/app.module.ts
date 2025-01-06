@@ -12,6 +12,7 @@ import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', {

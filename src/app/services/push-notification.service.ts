@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { BehaviorSubject } from 'rxjs';
@@ -8,11 +9,16 @@ import { mergeMapTo } from 'rxjs/operators';
 })
 export class PushNotificationService {
 
+  constructor(private http: HttpClient) {}
+
   private readonly _messaging = inject(Messaging);
   private readonly _message = new BehaviorSubject<unknown | undefined>(undefined);
 
   title = 'fcm-angular-demo';
   message$ = this._message.asObservable();
+  private readonly _token = new BehaviorSubject<string | undefined>(undefined);
+  token$ = this._token.asObservable();
+  pToken: string | undefined;
 
   activate(): void {
     // Request permission to receive notifications
@@ -27,6 +33,8 @@ export class PushNotificationService {
     getToken(this._messaging)
       .then((token) => {
         console.log('Token', token);
+        this.pToken = token;
+        this._token.next(token);
         // You can send this token to your server and store it there
         // You can also use this token to subscribe to topics
       })
@@ -57,4 +65,16 @@ export class PushNotificationService {
       complete: () => console.log('Done listening to messages')
     });
   }
+
+
+  subscribeToTopic(topic: string, token?: string) {
+
+    return this.http.get(`https://www.superiorgames.eu/esperia/subscribe.php?token=${token || this.pToken}&topic=${topic}`);
+  }
+
+  isSubscribed(token?: string, topic?: string) {
+    return this.http.get(`https://www.superiorgames.eu/esperia/isSubscribed.php?token=${token || this.pToken}&topic=${topic}`);
+  }
+
+
 }

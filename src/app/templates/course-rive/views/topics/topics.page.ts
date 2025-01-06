@@ -4,6 +4,10 @@ import { News, Store, typesIcons } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import Fuse from 'fuse.js';
 import { AppService } from '../../../../services/app.service';
+import { PushNotificationService } from '../../../../services/push-notification.service';
+import { getToken } from '@angular/fire/messaging';
+import { RiveSMInput } from 'ng-rive';
+import { HttpClient } from '@angular/common/http';
 declare var L: any;
 
 @Component({
@@ -16,6 +20,7 @@ export class TopicsPage {
   news: News[] = [];
   icons = typesIcons as any;
   selectedTopic: string | undefined;
+  subscribed: string[] = [];
 
   topics = {
     food: 'Food is trendy and delicious: look how to cook and eat healthy',
@@ -34,8 +39,10 @@ export class TopicsPage {
 
   }
 
-  constructor(private db: AngularFireDatabase) {
-
+  constructor(private db: AngularFireDatabase, private pushService: PushNotificationService, private http: HttpClient) {
+    this.pushService.token$.subscribe(async (token) => {
+      this.subscribed = await this.pushService.isSubscribed().toPromise() as any;
+    });
   }
 
   clickForSearch(topic: string) {
@@ -46,5 +53,13 @@ export class TopicsPage {
       .subscribe((data: any[]) => {
         this.news = data;
       });
+  }
+
+  subscribe(topic: string, confetti: RiveSMInput) {
+    this.pushService.subscribeToTopic(topic).subscribe(e => {
+      confetti.fire();
+      this.subscribed.push(topic);
+
+    });
   }
 }
