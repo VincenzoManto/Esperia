@@ -1,8 +1,8 @@
 {
-  "name": "Smash Hex",
-  "short_name": "Smash Hex",
-  "theme_color": "#fafafa",
-  "background_color": "#fafafa",
+  "name": "Esperia",
+  "short_name": "Esperia",
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
   "display": "standalone",
   "scope": "./",
   "version": "1.0.103",
