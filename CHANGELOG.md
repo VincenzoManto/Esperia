@@ -1,3 +1,8 @@
+## [0.2.1] - January 7, 2025
+
+### Changes
+- Release notes generated for version [0.2.1](.release-notes/0.2.1/release.md)
+
 ## [0.2.0] - January 7, 2025
 
 ### Changes
