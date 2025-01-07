@@ -4,6 +4,7 @@ import { News, Store } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import Fuse from 'fuse.js';
 import { AppService } from '../../../../services/app.service';
+import { ActivatedRoute } from '@angular/router';
 declare var L: any;
 
 @Component({
@@ -16,20 +17,44 @@ export class SearchPage implements OnInit {
   stores: Store[] = [];
   originalNews: News[] = [];
   originalStores: Store[] = [];
+  id: string | undefined | null;
 
   constructor(
     private db: AngularFireDatabase,
-    private appService: AppService
-  ) {}
+    private appService: AppService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.id = params.get('id');
+    });
+  }
 
   ngOnInit(): void {
-    this.db
-      .list('/news', (ref) => ref.orderByChild('time').limitToFirst(100))
-      .valueChanges()
-      .subscribe((data: any[]) => {
-        this.originalNews = data;
-      });
-    this.originalStores = this.appService.stores;
+    const api =
+      this.id && +this.id
+        ? this.db.list('/news', (ref) =>
+            ref.orderByChild('idx').equalTo(+this.id!)
+          )
+        : this.db.list('/news', (ref) =>
+            ref.orderByChild('time').limitToFirst(100)
+          );
+    api.valueChanges().subscribe((data: any[]) => {
+      this.originalStores = this.appService.stores;
+      this.originalNews = this.addNavs(data);
+      this.news = this.addNavs(this.originalNews);
+    });
+  }
+
+  addNavs(data: News[]) {
+    const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+
+    data.forEach((e) => {
+      if (e.store !== undefined) {
+        e.storeNavigation = this.originalStores[e.store];
+      }
+      e.liked = likes.includes(e.idx);
+    });
+    return data;
   }
 
   search(term: SearchbarCustomEvent) {

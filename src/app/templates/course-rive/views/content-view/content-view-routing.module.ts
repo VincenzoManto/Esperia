@@ -12,6 +12,10 @@ const routes: Routes = [
     component: ContentViewPage
   },
   {
+    path: 'news/:id',
+    component: SearchPage
+  },
+  {
     path: 'search',
     component: SearchPage
   },
