@@ -9,6 +9,7 @@ import { News } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppService } from '../../../../services/app.service';
 import { RiveSMInput } from 'ng-rive';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'cr-news-card',
@@ -108,6 +109,9 @@ export class NewsCardComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    if (this.section?.image && !this.section?.image?.startsWith('https://')) {
+      this.section.image = environment.api + 'image.php?p=' + this.section.image;
+    }
     if (this.section && !this.section?.liked) {
       const likes = JSON.parse(localStorage.getItem('likes') || '[]');
       this.section.liked = likes.includes(this.section.idx);

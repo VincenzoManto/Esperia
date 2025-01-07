@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Messaging, getToken, onMessage } from '@angular/fire/messaging';
 import { BehaviorSubject } from 'rxjs';
 import { mergeMapTo } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -69,11 +70,11 @@ export class PushNotificationService {
 
   subscribeToTopic(topic: string, token?: string) {
 
-    return this.http.get(`https://www.superiorgames.eu/esperia/subscribe.php?token=${token || this.pToken}&topic=${topic}`);
+    return this.http.get(`${environment.api}subscribe.php?token=${token || this.pToken}&topic=${topic}`);
   }
 
   isSubscribed(token?: string, topic?: string) {
-    return this.http.get(`https://www.superiorgames.eu/esperia/isSubscribed.php?token=${token || this.pToken}&topic=${topic}`);
+    return this.http.get(`${environment.api}isSubscribed.php?token=${token || this.pToken}&topic=${topic}`);
   }
 
 
