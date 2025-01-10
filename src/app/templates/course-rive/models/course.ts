@@ -136,6 +136,12 @@ export interface Store extends Likeable {
   name: string;
   address: string;
   city: string;
+  province: string;
+  country: string;
+  cap: string;
+  lat: number;
+  lng: number;
+  new?: boolean;
   phone: string;
   email: string;
   website: string;

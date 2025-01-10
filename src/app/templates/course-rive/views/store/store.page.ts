@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { AnimationController, IonModal, Platform } from '@ionic/angular';
 import { Store } from '../../models/course';
+import { environment } from '../../../../../environments/environment';
 declare var L: any;
 
 @Component({
@@ -31,8 +32,8 @@ export class StorePage implements OnInit {
     }
     const response = {
       ...s,
-      latitude: 56.9497,
-      longitude: 24.1042,
+      latitude: s.lat || environment.baseLatLng[0],
+      longitude: s.lng || environment.baseLatLng[1],
     };
     setTimeout(() => {
       if (!this.map) {
@@ -42,7 +43,7 @@ export class StorePage implements OnInit {
         );
       }
       const tiles = L.tileLayer(
-'https://api.mapbox.com/styles/v1/vincenzomanto/ck6t6fp9o0egt1is0ptkeq1pq/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmluY2Vuem9tYW50byIsImEiOiJjazZ0M25xNHkwM2s4M2xteWhrbjc3NmVyIn0.B7-ezeH4aCuy3W4WSWpeuQ',
+        'https://api.mapbox.com/styles/v1/vincenzomanto/ck6t6fp9o0egt1is0ptkeq1pq/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmluY2Vuem9tYW50byIsImEiOiJjazZ0M25xNHkwM2s4M2xteWhrbjc3NmVyIn0.B7-ezeH4aCuy3W4WSWpeuQ',
         {
           maxZoom: 19,
         }
@@ -55,11 +56,12 @@ export class StorePage implements OnInit {
             <img src="${response.logo.toLowerCase()}"
             crossorigin="anonymous"
                 height="12"
-                alt="${response.name}"> ${response.city}</b><br>${response.address}`
+                alt="${response.name}"> ${response.city}</b><br>${
+            response.address
+          }`
         )
         .openPopup();
-    }, 10)
-
+    }, 10);
   }
   @Output() closeStoreEvent = new EventEmitter();
 

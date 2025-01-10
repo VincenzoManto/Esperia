@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import Fuse from 'fuse.js';
 import { AppService } from '../../../../services/app.service';
 import { SearchbarCustomEvent } from '@ionic/angular';
+import { environment } from '../../../../../environments/environment';
 declare var L: any;
 
 @Component({
@@ -31,7 +32,7 @@ export class MapPage implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (!this.map) {
         this.map = L.map('map-entire').setView(
-          [56.9497, 24.1042],
+          environment.baseLatLng,
           5
         );
       }

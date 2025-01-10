@@ -1,9 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { RiveSMInput } from 'ng-rive';
-import { GoogleAuthProvider, FacebookAuthProvider, getAuth, signInWithPopup } from '@firebase/auth';
+import {
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from '@firebase/auth';
 import { initializeApp } from '@firebase/app';
 import { environment } from '../../../../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cr-sign-in',
@@ -17,7 +23,7 @@ export class SignInComponent implements OnInit {
   password = '';
   isLoading = false;
 
-  constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AngularFireAuth, private router: Router) {}
 
   ngOnInit() {}
 
@@ -30,22 +36,22 @@ export class SignInComponent implements OnInit {
     this.isLoading = true;
     const isValid = this.email.trim() !== '' && this.password.trim() !== '';
 
-    setTimeout(() => {
-      isValid ? success?.fire() : failure?.fire();
-    }, 1000);
-
-    setTimeout(() => {
-      this.isLoading = false;
-      reset?.fire();
-      isValid && confetti?.fire();
-    }, 3000);
-
-    isValid &&
-      setTimeout(() => {
+    this.auth.signInWithEmailAndPassword(this.email, this.password).then(
+      (user) => {
+        this.isLoading = false;
+        reset?.fire();
+        this.router.navigate(['/on-boarding/stores']);
+        success?.fire();
+        confetti?.fire();
         this.onSignInClose();
-        this.email = '';
-        this.password = '';
-      }, 4000);
+      },
+      (error) => {
+        this.isLoading = false;
+        reset?.fire();
+
+        failure?.fire();
+      }
+    );
   }
 
   onSignInClose() {
@@ -60,18 +66,16 @@ export class SignInComponent implements OnInit {
   ) {
     this.isLoading = true;
 
-
-    this.auth.onAuthStateChanged(function(user) {
+    this.auth.onAuthStateChanged(function (user) {
       console.log(user);
       if (user) {
-
         // User is signed in.
       } else {
         // No user is signed in.
       }
     });
-    const app = initializeApp(environment.firebaseConfig)
-    const auth = getAuth(app)
+    const app = initializeApp(environment.firebaseConfig);
+    const auth = getAuth(app);
     signInWithPopup(auth, new FacebookAuthProvider() as any)
       .then((result) => {
         console.log(result);
@@ -79,11 +83,13 @@ export class SignInComponent implements OnInit {
         fetch('https://graph.facebook.com/v17.0/me/accounts', {
           method: 'GET',
           headers: {
-            'Authorization': 'Bearer ' + result.user.getIdToken(),
-          }
-        }).then(response => response.json()).then(data => {
-          console.log(data);
+            Authorization: 'Bearer ' + result.user.getIdToken(),
+          },
         })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          });
         setTimeout(() => {
           this.isLoading = false;
           reset?.fire();
@@ -99,4 +105,5 @@ export class SignInComponent implements OnInit {
         }, 3000);
       });
   }
+
 }

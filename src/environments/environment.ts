@@ -14,7 +14,8 @@ export const environment = {
     appId: '1:338729314582:web:a8b38d6f194540058a0837',
     measurementId: 'G-R9CPNKPQRE',
   },
-  api: 'https://www.superiorgames.eu/esperia/'
+  api: 'https://www.superiorgames.eu/esperia/',
+  baseLatLng: [45,11]
 };
 
 /*

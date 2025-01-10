@@ -1,0 +1,168 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text class="font-title text-center w-100">
+                Store List
+              </ion-text></ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <!-- Table Header -->
+            <ion-row class="font-weight-bold">
+              <ion-col size="3"><ion-text>Name</ion-text></ion-col>
+              <ion-col size="3"><ion-text>City</ion-text></ion-col>
+              <ion-col size="3"><ion-text>Phone</ion-text></ion-col>
+              <ion-col size="3"><ion-text>Actions</ion-text></ion-col>
+            </ion-row>
+
+            <!-- Table Rows -->
+            <details *ngFor="let store of stores; let i = index" [open]="store.new">
+              <summary>
+                <ion-row class="align-items-center">
+                  <ion-col size="3">{{ store.name }}</ion-col>
+                  <ion-col size="3">{{ store.city }}</ion-col>
+                  <ion-col size="3">{{ store.phone }}</ion-col>
+                  <ion-col size="3">
+                    <button (click)="deleteStore(i)" class="btn text-danger">
+                      <ion-icon name="trash"></ion-icon>
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </summary>
+              <ion-card class="shadow">
+                <ion-card-content>
+                  <ion-row>
+                    <ion-col size="12">
+                      <div>
+                        <ion-label>Name</ion-label>
+                        <ion-input
+                          [(ngModel)]="store.name"
+                          name="name"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>Address</ion-label>
+                        <div class="d-flex">
+                          <ion-input
+                            [(ngModel)]="store.address"
+                            name="address"
+                          ></ion-input>
+                          <button (click)="openMap(store)" class="btn bg-transparent text-white">
+                            <ion-icon name="map"></ion-icon>
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <ion-label>Postal Code</ion-label>
+                        <ion-input
+                          [(ngModel)]="store.cap"
+                          name="cap"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>City</ion-label>
+                        <ion-input
+                          [(ngModel)]="store.city"
+                          name="city"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>Phone</ion-label>
+                        <ion-input
+                          mask="(999) 999-9999"
+                          [(ngModel)]="store.phone"
+                          name="phone"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>Email</ion-label>
+                        <ion-input
+                          [(ngModel)]="store.email"
+                          name="email"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>Website</ion-label>
+                        <ion-input
+                          [(ngModel)]="store.website"
+                          name="website"
+                        ></ion-input>
+                      </div>
+                      <div>
+                        <ion-label>Description</ion-label>
+                        <ion-textarea
+                          [(ngModel)]="store.description"
+                          name="description"
+                        ></ion-textarea>
+                      </div>
+
+                      <!-- Draggable Image -->
+                      <div>
+                        <ion-label>Logo</ion-label>
+                        <ion-input
+                          type="file"
+                          (change)="uploadImage($event, store)"
+                          name="logo"
+                        ></ion-input>
+                      </div>
+                      <hr />
+                      <button
+                        class="btn btn-warning w-100"
+                        (click)="generateLink(store)"
+                      >
+                        Generate link
+                      </button>
+                      <hr />
+                      <button
+                        class="btn btn-warning w-100"
+                        (click)="updateStore(store, i)"
+                      >
+                        Save
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
+            </details>
+            <div class="row mt-2">
+              <div class="col-12">
+                <button class="btn btn-warning w-100" (click)="addStore()">Add Store</button>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-modal
+  #modal
+  backdropDismiss="false"
+  [enterAnimation]="enterAnimation"
+  [leaveAnimation]="leaveAnimation"
+>
+  <ng-template>
+    <ion-card>
+      <ion-card-content>
+        <div class="row">
+          <div class="col-auto">
+            <button (click)="mapModal?.dismiss()" class="btn btn-white rounded-circle">
+              <ion-icon name="close"></ion-icon>
+            </button>
+          </div>
+        </div>
+        <div id="map"></div>
+        <div class="bottom-0 position-fixed mb-3 pb-3  w-100 floating text-center" (click)="mapModal?.dismiss()">
+          <button class="btn btn-warning rounded-pill m-auto">
+            <ion-text class="font-title3">Confirm</ion-text>
+          </button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-modal>
