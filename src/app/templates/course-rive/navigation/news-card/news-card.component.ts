@@ -10,6 +10,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppService } from '../../../../services/app.service';
 import { RiveSMInput } from 'ng-rive';
 import { environment } from '../../../../../environments/environment';
+import * as showdown from 'showdown';
 
 @Component({
   selector: 'cr-news-card',
@@ -23,9 +24,7 @@ import { environment } from '../../../../../environments/environment';
           }}</ion-text>
           <div class="spacing"></div>
           <div>
-            <ion-text class="font-body collapsable" [class.opened]="opened">{{
-              section.caption
-            }}</ion-text>
+            <ion-text class="font-body collapsable" [class.opened]="opened" [innerHTML]="section.caption"></ion-text>
           </div>
           <small class="opacity-50">{{
             section.time | date : 'dd MMMM yyyy'
@@ -109,6 +108,10 @@ export class NewsCardComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    if (this.section) {
+      let converter = new showdown.Converter();
+      this.section.caption = converter.makeHtml(this.section?.caption);
+    }
     if (this.section?.image && !this.section?.image?.startsWith('https://')) {
       this.section.image = environment.api + 'image.php?p=' + this.section.image;
     }

@@ -5,6 +5,7 @@ import { ContentViewPage } from './content-view.page';
 import { SearchPage } from '../search/search.page';
 import { MapPage } from '../map/map.page';
 import { TopicsPage } from '../topics/topics.page';
+import { StarredPage } from '../starred/starred.page';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'topics',
     component: TopicsPage
+  },
+  {
+    path: 'starred',
+    component: StarredPage
   }
 ];
 

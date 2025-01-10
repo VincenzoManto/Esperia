@@ -40,22 +40,12 @@ export class SearchPage implements OnInit {
           );
     api.valueChanges().subscribe((data: any[]) => {
       this.originalStores = this.appService.stores;
-      this.originalNews = this.addNavs(data);
-      this.news = this.addNavs(this.originalNews);
+      this.originalNews = addNavs(this.originalStores, data);
+      this.news = addNavs(this.originalStores, this.originalNews);
     });
   }
 
-  addNavs(data: News[]) {
-    const likes = JSON.parse(localStorage.getItem('likes') || '[]');
 
-    data.forEach((e) => {
-      if (e.store !== undefined) {
-        e.storeNavigation = this.originalStores[e.store];
-      }
-      e.liked = likes.includes(e.idx);
-    });
-    return data;
-  }
 
   search(term: SearchbarCustomEvent) {
     if (!term?.detail?.value || term?.detail?.value.trim().length < 2) {
@@ -77,4 +67,16 @@ export class SearchPage implements OnInit {
     const result = fuse.search(query).map((r: any) => r.item);
     return result;
   }
+}
+
+export function addNavs(stores: Store[], data: News[]) {
+  const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+
+  data.forEach((e) => {
+    if (e.store !== undefined) {
+      e.storeNavigation = stores[e.store];
+    }
+    e.liked = likes.includes(e.idx);
+  });
+  return data;
 }

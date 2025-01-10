@@ -1,11 +1,11 @@
 <div class="p-2">
-  <div class="courses-list row" *ngIf="!selectedTopic">
+  <div class="courses-list row justify-content-center" *ngIf="!selectedTopic">
     <ion-text
       class="courses-list-title title font-largeTitle text-center col-12"
       >Topics</ion-text
     >
     <div
-      class="course-container col-11 col-lg-12 cursor-pointer"
+      class="course-container col-10 col-lg-11 cursor-pointer"
       *ngFor="let topic of topics | keyvalue"
     >
       <div (click)="clickForSearch(topic.key)">

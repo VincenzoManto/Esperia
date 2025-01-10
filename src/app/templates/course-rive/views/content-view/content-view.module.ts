@@ -14,6 +14,7 @@ import { StoreCardComponent } from '../../navigation/store-card/store-card.compo
 import { SearchPage } from '../search/search.page';
 import { MapPage } from '../map/map.page';
 import { TopicsPage } from '../topics/topics.page';
+import { StarredPage } from '../starred/starred.page';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { TopicsPage } from '../topics/topics.page';
     ShuffleArrayPipe,
     StoreCardComponent,
     NewsCardComponent,
+    StarredPage,
   ],
 })
 export class ContentViewPageModule {}
