@@ -20,6 +20,15 @@ export class BottomTabBarComponent implements OnInit {
     for (let i = 0; i < this.tabItems.length; i++) {
       setTimeout(() => (this.tabItems[i].show = true), 1000);
     }
+    this.router.events.subscribe((event) => {
+      const url = (event as any).url?.split('/')[1];
+      const tab = this.tabItems.find((t) => t.url === url);
+      if (tab) {
+        this.selectedTab.status = false;
+        tab.status = true;
+        this.selectedTab = tab;
+      }
+    });
   }
 
   onIconPress(tab: BottomTabItem) {
