@@ -16,7 +16,7 @@ import * as showdown from 'showdown';
   selector: 'cr-news-card',
   template: `
     <div class="section-container" *ngIf="section">
-      <ion-img [src]="section.image" class="img" *ngIf="section.image"></ion-img>
+      <img fallback-src [src]="section.image" class="img" *ngIf="section.image"/>
       <ion-row *ngIf="section" (click)="opened = !opened">
         <ion-col size="10">
           <ion-text class="font-title3 open-status" [class.opened]="opened">{{

@@ -15,6 +15,7 @@ import { SearchPage } from '../search/search.page';
 import { MapPage } from '../map/map.page';
 import { TopicsPage } from '../topics/topics.page';
 import { StarredPage } from '../starred/starred.page';
+import { FallbackDirective } from '../../../../directives/fallback.directive';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { StarredPage } from '../starred/starred.page';
   declarations: [
     ContentViewPage,
     SearchPage,
+    FallbackDirective,
     TopicsPage,
     MapPage,
     ShuffleArrayPipe,
