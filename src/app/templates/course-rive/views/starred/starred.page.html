@@ -1,0 +1,28 @@
+<div class="p-2">
+  <ion-text class="courses-list-title title font-largeTitle text-center w-100 d-block"
+    >Starred</ion-text
+  >
+  <ion-text class="font-title text-center d-block w-100" *ngIf="news.length">News</ion-text>
+
+  <ion-list>
+    <ion-item *ngFor="let news of news" class="bg-transparent">
+      <cr-news-card class="w-100" [section]="news"></cr-news-card>
+    </ion-item>
+  </ion-list>
+
+  <h3 *ngIf="!(news.length)" class="text-center mt-2">
+    <ion-img
+      class="m-auto mb-2"
+      src="https://ouch-cdn2.icons8.com/-iQqxrxT61dfH3LPTMZXI-n9cbeEau7XAB2Yg5iFLTM/rs:fit:368:337/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTY5/L2EyZDkzYzk4LTli/MjgtNGExNC1iODU1/LTNiZDA0YThkNDVk/YS5wbmc.png"
+      style="width: 50vmin"
+    ></ion-img>
+    <ion-text class="font-body">
+      <ion-img
+        src="https://img.icons8.com/?size=24&id=89144&format=png"
+        class="icon"
+      ></ion-img>
+
+      Such empty, much wow!</ion-text
+    >
+  </h3>
+</div>

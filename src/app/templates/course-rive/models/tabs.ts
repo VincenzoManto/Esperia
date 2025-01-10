@@ -51,9 +51,9 @@ export const tabItemsList: BottomTabItem[] = [
     id: 'tab_user',
     stateMachine: 'USER_Interactivity',
     artboard: 'USER',
-    icon: '3WOdQWsvoKMC',
+    icon: 'DWtX0ThMVpFF',
     status: false,
-    url: 'profile',
+    url: 'starred',
     show: false,
   },
 ];
