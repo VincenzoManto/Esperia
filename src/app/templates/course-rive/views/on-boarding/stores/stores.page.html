@@ -20,7 +20,10 @@
             </ion-row>
 
             <!-- Table Rows -->
-            <details *ngFor="let store of stores; let i = index" [open]="store.new">
+            <details
+              *ngFor="let store of stores; let i = index"
+              [open]="store.new"
+            >
               <summary>
                 <ion-row class="align-items-center">
                   <ion-col size="3">{{ store.name }}</ion-col>
@@ -37,77 +40,123 @@
                 <ion-card-content>
                   <ion-row>
                     <ion-col size="12">
-                      <div>
-                        <ion-label>Name</ion-label>
-                        <ion-input
-                          [(ngModel)]="store.name"
-                          name="name"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>Address</ion-label>
-                        <div class="d-flex">
+                      <div class="row">
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Name</ion-label>
                           <ion-input
-                            [(ngModel)]="store.address"
-                            name="address"
+                            [(ngModel)]="store.name"
+                            name="name"
                           ></ion-input>
-                          <button (click)="openMap(store)" class="btn bg-transparent text-white">
-                            <ion-icon name="map"></ion-icon>
-                          </button>
                         </div>
-                      </div>
-                      <div>
-                        <ion-label>Postal Code</ion-label>
-                        <ion-input
-                          [(ngModel)]="store.cap"
-                          name="cap"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>City</ion-label>
-                        <ion-input
-                          [(ngModel)]="store.city"
-                          name="city"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>Phone</ion-label>
-                        <ion-input
-                          mask="(999) 999-9999"
-                          [(ngModel)]="store.phone"
-                          name="phone"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>Email</ion-label>
-                        <ion-input
-                          [(ngModel)]="store.email"
-                          name="email"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>Website</ion-label>
-                        <ion-input
-                          [(ngModel)]="store.website"
-                          name="website"
-                        ></ion-input>
-                      </div>
-                      <div>
-                        <ion-label>Description</ion-label>
-                        <ion-textarea
-                          [(ngModel)]="store.description"
-                          name="description"
-                        ></ion-textarea>
-                      </div>
+                        <div class="col-12">
+                          <ion-label>Description</ion-label>
+                          <ion-textarea
+                            [(ngModel)]="store.description"
+                            name="description"
+                          ></ion-textarea>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Address</ion-label>
+                          <div class="d-flex">
+                            <ion-input
+                              [(ngModel)]="store.address"
+                              name="address"
+                            ></ion-input>
+                            <button
+                              (click)="openMap(store)"
+                              class="btn bg-transparent text-white"
+                            >
+                              <ion-icon name="map"></ion-icon>
+                            </button>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Postal Code</ion-label>
+                          <ion-input
+                            [(ngModel)]="store.cap"
+                            name="cap"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>City</ion-label>
+                          <ion-input
+                            [(ngModel)]="store.city"
+                            name="city"
+                          ></ion-input>
+                        </div>
+                        <hr />
+                        <ion-text class="col-12 font-title3">Contact</ion-text>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Phone</ion-label>
+                          <ion-input
+                            mask="(999) 999-9999"
+                            [(ngModel)]="store.phone"
+                            type="tel"
+                            name="phone"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Email</ion-label>
+                          <ion-input
+                            [(ngModel)]="store.email"
+                            name="email"
+                            type="email"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label
+                            >Website
+                            <ion-icon name="earth-outline"></ion-icon>
+                          </ion-label>
+                          <ion-input
+                            [(ngModel)]="store.website"
+                            type="url"
+                            name="website"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>
+                            <ion-icon name="logo-facebook"></ion-icon>
+                          </ion-label>
+                          <ion-input
+                            [(ngModel)]="store.facebook"
+                            name="facebook"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>
+                            <ion-icon name="logo-instagram"></ion-icon>
+                          </ion-label>
+                          <ion-input
+                            [(ngModel)]="store.instagram"
+                            name="instagram"
+                          ></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>
+                            <ion-icon name="logo-x"></ion-icon>
+                          </ion-label>
+                          <ion-input [(ngModel)]="store.x" name="x"></ion-input>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>
+                            <ion-icon name="at-outline"></ion-icon>
+                          </ion-label>
+                          <ion-input
+                            [(ngModel)]="store.threads"
+                            name="threads"
+                          ></ion-input>
+                        </div>
 
-                      <!-- Draggable Image -->
-                      <div>
-                        <ion-label>Logo</ion-label>
-                        <ion-input
-                          type="file"
-                          (change)="uploadImage($event, store)"
-                          name="logo"
-                        ></ion-input>
+                        <!-- Draggable Image -->
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <ion-label>Logo</ion-label>
+                          <ion-input
+                            type="file"
+                            (change)="uploadImage($event, store)"
+                            name="logo"
+                          ></ion-input>
+                        </div>
                       </div>
                       <hr />
                       <button
@@ -130,7 +179,9 @@
             </details>
             <div class="row mt-2">
               <div class="col-12">
-                <button class="btn btn-warning w-100" (click)="addStore()">Add Store</button>
+                <button class="btn btn-warning w-100" (click)="addStore()">
+                  Add Store
+                </button>
               </div>
             </div>
           </ion-card-content>
@@ -151,13 +202,19 @@
       <ion-card-content>
         <div class="row">
           <div class="col-auto">
-            <button (click)="mapModal?.dismiss()" class="btn btn-white rounded-circle">
+            <button
+              (click)="mapModal?.dismiss()"
+              class="btn btn-white rounded-circle"
+            >
               <ion-icon name="close"></ion-icon>
             </button>
           </div>
         </div>
         <div id="map"></div>
-        <div class="bottom-0 position-fixed mb-3 pb-3  w-100 floating text-center" (click)="mapModal?.dismiss()">
+        <div
+          class="bottom-0 position-fixed mb-3 pb-3 w-100 floating text-center"
+          (click)="mapModal?.dismiss()"
+        >
           <button class="btn btn-warning rounded-pill m-auto">
             <ion-text class="font-title3">Confirm</ion-text>
           </button>

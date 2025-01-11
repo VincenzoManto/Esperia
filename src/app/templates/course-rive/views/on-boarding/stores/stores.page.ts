@@ -103,7 +103,7 @@ export class StoresPage implements OnInit {
       .subscribe((response: any) => {
         store.address = response['display_name'];
         store.cap = response['address']['postcode'];
-        store.city = response['address']['town'];
+        store.city = response['address']['town'] || response['address']['county'];
         store.country = response['address']['country'];
         store.province = response['address']['county'];
         console.log(response);

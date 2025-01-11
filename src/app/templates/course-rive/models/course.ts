@@ -147,4 +147,8 @@ export interface Store extends Likeable {
   website: string;
   logo: string;
   description: string;
+  facebook: string;
+  instagram: string;
+  x: string;
+  threads: string;
 }
