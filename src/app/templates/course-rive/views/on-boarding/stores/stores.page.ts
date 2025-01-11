@@ -181,7 +181,7 @@ export class StoresPage implements OnInit {
           store.lat || environment.baseLatLng[0],
           store.lng || environment.baseLatLng[1],
         ],
-        6
+        12
       );
       const tiles = L.tileLayer(
         'https://api.mapbox.com/styles/v1/vincenzomanto/ck6t6fp9o0egt1is0ptkeq1pq/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmluY2Vuem9tYW50byIsImEiOiJjazZ0M25xNHkwM2s4M2xteWhrbjc3NmVyIn0.B7-ezeH4aCuy3W4WSWpeuQ',
