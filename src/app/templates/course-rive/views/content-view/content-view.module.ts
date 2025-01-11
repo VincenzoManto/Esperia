@@ -16,6 +16,7 @@ import { MapPage } from '../map/map.page';
 import { TopicsPage } from '../topics/topics.page';
 import { StarredPage } from '../starred/starred.page';
 import { FallbackDirective } from '../../../../directives/fallback.directive';
+import { DirectivesModule } from '../../../../directives/directives.module';
 
 @NgModule({
   imports: [
@@ -23,13 +24,13 @@ import { FallbackDirective } from '../../../../directives/fallback.directive';
     RiveModule,
     FormsModule,
     IonicModule,
+    DirectivesModule,
     ContentViewPageRoutingModule,
   ],
   exports: [ContentViewPage, StoreCardComponent, NewsCardComponent],
   declarations: [
     ContentViewPage,
     SearchPage,
-    FallbackDirective,
     TopicsPage,
     MapPage,
     ShuffleArrayPipe,

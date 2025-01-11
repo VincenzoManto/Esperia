@@ -12,6 +12,7 @@ export class AppService {
   public stores: Store[] = [];
   public openStoreSubject = new BehaviorSubject<Store | null>(null);
   public onOpenStore = this.openStoreSubject.asObservable();
+  public storesSubject = new BehaviorSubject<Store[]>([]);
 
   constructor() { }
 

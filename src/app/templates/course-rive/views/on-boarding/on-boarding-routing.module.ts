@@ -4,6 +4,7 @@ import { RiveModule } from 'ng-rive';
 
 import { OnBoardingPage } from './on-boarding.page';
 import { StoresPage } from './stores/stores.page';
+import { SenderPage } from './sender/sender.page';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'stores',
     component: StoresPage
+  },
+  {
+    path: 'news/:store',
+    component: SenderPage
   }
 ];
 

@@ -27,14 +27,12 @@ ion-col {
   }
 
   .section-img {
-    width: 48px;
     height: 50px;
+    aspect-ratio: 1;
     overflow: hidden;
-    ::ng-deep img {
-      object-fit: contain;
-    }
     padding: 2px;
     border-radius: 50%;
+    object-fit: contain;
     background: #fff;
     margin-left: 20px;
   }
@@ -102,4 +100,20 @@ ion-col {
   &.opened::after {
     transform: rotate(-90deg);
   }
+}
+
+
+ion-text {
+  font-family: 'Inter-Regular';
+}
+
+
+.font-bold {
+  font-family: 'Inter-SemiBold';
+}
+
+.preview {
+  height: 50px;
+    text-overflow: ellipsis;
+    display: block;
 }

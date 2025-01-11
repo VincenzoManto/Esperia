@@ -117,9 +117,11 @@ export interface News extends Likeable {
   title: string;
   time: Date;
   topics: string[];
-  idx: number;
+  idx: string | number;
   color: string;
+  new?: boolean;
   caption: string;
+  preview?: any;
   subtitle?: string;
   image: string;
   store?: number;

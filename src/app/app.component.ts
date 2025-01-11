@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   ) {
     this.db.list('/stores').valueChanges().subscribe((data: any[]) => {
       this.appService.stores = data;
+      this.appService.storesSubject.next(data);
     });
     // Initialize Firebase
     const app = initializeApp(environment.firebaseConfig);

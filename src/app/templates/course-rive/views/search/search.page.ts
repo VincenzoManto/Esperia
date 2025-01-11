@@ -12,7 +12,7 @@ declare var L: any;
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class SearchPage {
   news: News[] = [];
   stores: Store[] = [];
   originalNews: News[] = [];
@@ -26,14 +26,15 @@ export class SearchPage implements OnInit {
   ) {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.id = params.get('id');
+      this.load();
     });
   }
 
-  ngOnInit(): void {
+  load(): void {
     const api =
       this.id && +this.id
         ? this.db.list('/news', (ref) =>
-            ref.orderByChild('idx').equalTo(+this.id!)
+            ref.orderByChild('idx').equalTo(this.id!)
           )
         : this.db.list('/news', (ref) =>
             ref.orderByChild('time').limitToFirst(100)

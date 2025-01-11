@@ -89,3 +89,9 @@
 .text-muted {
   color: rgba(255, 255, 255, 0.6);
 }
+
+::ng-deep a {
+  color: inherit;
+  font-family: 'Inter-SemiBold';
+  text-decoration: underline dashed 1px;
+}
