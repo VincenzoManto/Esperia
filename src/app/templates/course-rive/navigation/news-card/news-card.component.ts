@@ -148,7 +148,12 @@ export class NewsCardComponent implements AfterViewInit {
       if (!this.section.image) {
         const urlMatch = this.section.caption.match(/\[.*\]\((.*)\)/);
         if (urlMatch) {
-          this.section.preview = await this.getMetdata(urlMatch[1]);
+          try {
+            this.section.preview = await this.getMetdata(urlMatch[1]);
+
+          } catch (e) {
+
+          }
         }
       }
       this.section.html = converter.makeHtml(this.section?.caption);
