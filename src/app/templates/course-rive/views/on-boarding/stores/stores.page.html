@@ -157,21 +157,27 @@
                             name="logo"
                           ></ion-input>
                         </div>
+                        <hr />
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <button
+                            class="btn btn-warning w-100"
+                            (click)="generateLink(store)"
+                          >
+                            <ion-icon name="link-outline"></ion-icon>
+                            <ion-text> Generate link </ion-text>
+                          </button>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6">
+                          <button
+                            class="btn btn-warning w-100"
+                            (click)="updateStore(store, i)"
+                          >
+                            <ion-icon name="save-outline"></ion-icon>
+
+                            <ion-text> Save </ion-text>
+                          </button>
+                        </div>
                       </div>
-                      <hr />
-                      <button
-                        class="btn btn-warning w-100"
-                        (click)="generateLink(store)"
-                      >
-                        Generate link
-                      </button>
-                      <hr />
-                      <button
-                        class="btn btn-warning w-100"
-                        (click)="updateStore(store, i)"
-                      >
-                        Save
-                      </button>
                     </ion-col>
                   </ion-row>
                 </ion-card-content>
@@ -180,7 +186,8 @@
             <div class="row mt-2">
               <div class="col-12">
                 <button class="btn btn-warning w-100" (click)="addStore()">
-                  Add Store
+                  <ion-icon name="add-outline"></ion-icon>
+                  <ion-text> Add Store </ion-text>
                 </button>
               </div>
             </div>
