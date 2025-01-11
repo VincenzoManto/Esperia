@@ -8,7 +8,7 @@ import { IonModal } from '@ionic/angular/common';
 @Component({
   selector: 'cr-store-card',
   template: `
-    <div class="section-container" *ngIf="section">
+    <div class="section-container shadow" *ngIf="section">
       <ion-row *ngIf="section">
         <ion-col>
           <ion-text class="font-title2">{{ section.name }}</ion-text>

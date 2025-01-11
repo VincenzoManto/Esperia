@@ -31,13 +31,17 @@ export class SideMenuComponent implements OnInit {
 
   selectedMenu = this.menuItems[0];
   isDarkMode = false;
+  darkLink: HTMLMetaElement;
 
   constructor(
     private animationCtrl: AnimationController,
     private navigation: NavController,
     public platform: Platform,
     public router: Router
-  ) {}
+  ) {
+    this.darkLink = document.head.querySelector('meta[name="color-scheme"]')!;
+    this.setTheme(localStorage.getItem('light') !== 'true');
+  }
 
   ngOnInit() {
     // Temporary solution to fix the rive asset loading issue causing "Binding Error",
@@ -97,6 +101,20 @@ export class SideMenuComponent implements OnInit {
 
   onDarkModeToggle() {
     this.menuItems3[0].status = this.isDarkMode;
+    this.setTheme(this.isDarkMode);
+  }
+
+  setTheme(isDark: boolean) {
+    this.isDarkMode = isDark;
+    if (this.isDarkMode) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+    }
+    this.darkLink.content = this.isDarkMode ? 'dark' : 'light';
+    localStorage.setItem('light', !this.isDarkMode ? 'true' : 'false');
   }
 
   goBack() {

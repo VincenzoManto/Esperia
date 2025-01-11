@@ -33,17 +33,16 @@
   }
 
   .course-container {
-    background: #222 !important;
-    color: white;
+    background: var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff)));
+    color: var(--ion-card-color);
     margin-bottom: 10px;
-    box-shadow: 0 0 20px #0005;
+
     border-radius: 30px;
     padding: 10px 30px;
 
     position: relative;
     padding: 30px;
     border-radius: 30px;
-    color: white;
 
     .course-img {
       width: 100px;

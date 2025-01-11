@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'cr-news-card',
   template: `
-    <div class="section-container" *ngIf="section">
+    <div class="section-container shadow" *ngIf="section">
       <img
         fallback-src
         [src]="section.image"
@@ -109,19 +109,19 @@ import { HttpClient } from '@angular/common/http';
         </ion-col>
         <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
           <ion-img
-            [src]="'https://img.icons8.com/material-two-tone/24/map-marker.png'"
+            [src]="'https://img.icons8.com/plumpy/48/map-marker.png'"
             class="icon"
           ></ion-img>
         </ion-col>
         <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
           <ion-img
-            [src]="'https://img.icons8.com/plumpy/24/bookmark-ribbon--v1.png'"
+            [src]="'https://img.icons8.com/plumpy/48/bookmark-ribbon--v1.png'"
             class="icon"
           ></ion-img>
         </ion-col>
         <ion-col size="auto">
           <ion-img
-            [src]="'https://img.icons8.com/material-two-tone/24/qr-code.png'"
+            [src]="'https://img.icons8.com/plumpy/48/paint-bucket-with-qr.png'"
             class="icon"
           ></ion-img>
         </ion-col>
