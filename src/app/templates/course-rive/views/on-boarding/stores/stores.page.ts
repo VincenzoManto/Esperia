@@ -266,6 +266,19 @@ export class StoresPage implements OnInit {
       .then((toast) => toast.present());
   }
 
+  generateEditorLink(store: Store) {
+    navigator.clipboard.writeText(
+      `${location.href.replace('stores', 'news')}/${store.id}`
+    );
+    this.toast
+    .create({
+      message: 'Link copied to clipboard',
+      color: 'dark',
+      duration: 2000,
+    })
+    .then((toast) => toast.present());
+  }
+
   addStore() {
     this.stores.push({
       id: this.guid(),

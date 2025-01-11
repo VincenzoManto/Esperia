@@ -149,7 +149,7 @@
                         </div>
 
                         <!-- Draggable Image -->
-                        <div class="col-12 col-md-12 col-lg-6">
+                        <div class="col-12 col-md-12 col-lg-4">
                           <ion-label>Logo</ion-label>
                           <ion-input
                             type="file"
@@ -158,16 +158,25 @@
                           ></ion-input>
                         </div>
                         <hr />
-                        <div class="col-12 col-md-12 col-lg-6">
+                        <div class="col-12 col-md-12 col-lg-4 mb-2">
+                          <button
+                            class="btn btn-warning w-100"
+                            (click)="generateEditorLink(store)"
+                          >
+                            <ion-icon name="link-outline"></ion-icon>
+                            <ion-text> Editor link </ion-text>
+                          </button>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-4 mb-2">
                           <button
                             class="btn btn-warning w-100"
                             (click)="generateLink(store)"
                           >
-                            <ion-icon name="link-outline"></ion-icon>
-                            <ion-text> Generate link </ion-text>
+                            <ion-icon name="send"></ion-icon>
+                            <ion-text> Telegram link </ion-text>
                           </button>
                         </div>
-                        <div class="col-12 col-md-12 col-lg-6">
+                        <div class="col-12 col-md-12 col-lg-4 mb-2">
                           <button
                             class="btn btn-warning w-100"
                             (click)="updateStore(store, i)"
