@@ -1,4 +1,4 @@
-<div>
+<div  (scroll)="onScroll($event)">
   <ion-text
     class="courses-list-title title font-largeTitle d-block w-100 text-center"
     >Esperia Home</ion-text
@@ -48,6 +48,9 @@
             [section]="section"
           ></cr-news-card>
         </ion-col>
+        <ion-infinite-scroll (ionInfinite)="onScroll($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
       </ion-row>
     </ion-grid>
   </div>

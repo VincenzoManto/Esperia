@@ -126,6 +126,7 @@ export interface News extends Likeable {
   image: string;
   store?: number;
   storeNavigation?: Store;
+  html?: string;
 }
 
 export interface Likeable {

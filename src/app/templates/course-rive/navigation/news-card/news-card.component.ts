@@ -45,9 +45,9 @@ import { HttpClient } from '@angular/common/http';
         </ion-card-content>
       </ion-card>
 
-      <ion-row *ngIf="section" (click)="opened = !opened">
+      <ion-row *ngIf="section" (click)="opened = !opened" class="align-items-center">
         <ion-col size="10">
-          <ion-text class="font-title3 open-status" [class.opened]="opened">{{
+          <ion-text class="font-title3 open-status font-bold" [class.opened]="opened">{{
             section.title
           }}</ion-text>
           <div class="spacing"></div>
@@ -60,10 +60,10 @@ import { HttpClient } from '@angular/common/http';
         </ion-col>
       </ion-row>
       <div>
-        <ion-text
+        <ion-text *ngIf="section.html"
           class="font-body collapsable"
           [class.opened]="opened"
-          [innerHTML]="section.caption"
+          [innerHTML]="section.html"
         ></ion-text>
       </div>
       <small class="opacity-50">{{
@@ -151,7 +151,7 @@ export class NewsCardComponent implements AfterViewInit {
           this.section.preview = await this.getMetdata(urlMatch[1]);
         }
       }
-      this.section.caption = converter.makeHtml(this.section?.caption);
+      this.section.html = converter.makeHtml(this.section?.caption);
     }
 
     if (this.section?.image && !this.section?.image?.startsWith('https://')) {
