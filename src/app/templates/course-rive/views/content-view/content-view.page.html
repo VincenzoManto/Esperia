@@ -1,5 +1,8 @@
 <div>
-  <ion-text class="courses-list-title title font-largeTitle d-block w-100 text-center">Esperia Home</ion-text>
+  <ion-text
+    class="courses-list-title title font-largeTitle d-block w-100 text-center"
+    >Esperia Home</ion-text
+  >
   <!-- Course VCard -->
   <div class="courses-list">
     <div
@@ -30,6 +33,9 @@
   <ion-text class="recent-title title font-title3">Recent</ion-text>
   <!-- Recent course Section -->
   <div class="section-list">
+    <ion-refresher id="refresher" slot="fixed" (ionRefresh)="load()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
     <ion-grid class="section-grid">
       <ion-row>
         <ion-col

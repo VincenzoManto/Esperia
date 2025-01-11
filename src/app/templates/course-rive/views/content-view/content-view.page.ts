@@ -13,11 +13,16 @@ import { AnimationController } from '@ionic/angular';
 export class ContentViewPage implements OnInit {
   courses = coursesList;
   courseSections: News[] = [];
-  news$: Observable<any[]>;
+  news$: Observable<any[]> | undefined;
   icons = typesIcons as any;
 
   constructor(private db: AngularFireDatabase, private appService: AppService, public animationCtrl: AnimationController) {
+    this.load();
+  }
+
+  load() {
     const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+
     this.news$ = this.db.list('/news', (ref) => ref.orderByChild('time').limitToLast(5)).valueChanges();
     const sub = this.news$.subscribe((data) => {
       this.courseSections = data.sort((a, b) => a.time > b.time ? -1 : 1);
