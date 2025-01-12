@@ -89,7 +89,7 @@ export interface OpenData {
       uv_index: string;
     };
   };
-  ospedali: Array<{
+  hospitals: Array<{
     nome: string;
     rosso: number;
     giallo: number;

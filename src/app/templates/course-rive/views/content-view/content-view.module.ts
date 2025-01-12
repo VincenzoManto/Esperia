@@ -19,6 +19,7 @@ import { FallbackDirective } from '../../../../directives/fallback.directive';
 import { DirectivesModule } from '../../../../directives/directives.module';
 import { IconWeatherComponent } from './icon-weather.component';
 import { WeatherWidget } from './weather.widget';
+import { HospitalWidget } from './hospital.widget';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { WeatherWidget } from './weather.widget';
   declarations: [
     ContentViewPage,
     SearchPage,
+    HospitalWidget,
     TopicsPage,
     MapPage,
     WeatherWidget,

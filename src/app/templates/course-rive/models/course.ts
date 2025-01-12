@@ -15,7 +15,7 @@ export const typesIcons = {
   job: 'https://cdn3d.iconscout.com/3d/premium/thumb/business-goal-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--target-investment-career-pack-illustrations-3010228.png?f=webp',
   education:
     'https://cdn3d.iconscout.com/3d/premium/thumb/school-chair-3d-icon-download-in-png-blend-fbx-gltf-file-formats--student-seat-furniture-education-pack-icons-4884509.png',
-    health: 'https://cdn3d.iconscout.com/3d/premium/thumb/healthcare-3d-icon-download-in-png-blend-fbx-gltf-file-formats--medical-hospital-doctor-nurse-pack-icons-4884509.png',
+    health: 'https://cdn3d.iconscout.com/3d/premium/thumb/health-care-3d-icon-download-in-png-blend-fbx-gltf-file-formats--heart-hospital-medical-pack-healthcare-icons-6043319.png?f=webp',
 };
 
 export const coursesList: News[] = [

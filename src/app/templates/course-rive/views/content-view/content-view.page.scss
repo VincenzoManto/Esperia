@@ -101,6 +101,17 @@
   padding: 0.5rem;
 }
 
+.status {
+  width: 2rem;
+}
+.ar-1 {
+  aspect-ratio: 1;
+}
+
+.bg-success {
+  background-color: #00d86f;
+}
+
 }
 .text-muted {
   color: rgba(255, 255, 255, 0.6);
@@ -109,4 +120,26 @@
 ::ng-deep a {
   color: inherit;
   text-decoration: underline dashed 1px;
+}
+
+::ng-deep {
+  /**
+  * Custom CSS for MD width
+  */
+
+  @media (min-width: 400px) {
+    .w-md-75 {
+      width: 75% !important;
+    }
+  }
+
+  /**
+  * Custom CSS for LG width
+  */
+
+  @media (min-width: 700px) {
+    .w-lg-50 {
+      width: 50% !important;
+    }
+  }
 }

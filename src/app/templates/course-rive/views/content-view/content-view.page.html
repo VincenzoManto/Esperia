@@ -5,7 +5,18 @@
   >
   <!-- Course VCard -->
   <div class="courses-list">
-    <app-weather [openData]="openData" [icons]="weatherIcons"   class="course-container shadow  pb-5"></app-weather>
+    <app-weather
+      [openData]="openData"
+      [icons]="weatherIcons"
+      *ngIf="openData?.weather"
+      class="course-container shadow pb-5 w-lg-50 w-md-75"
+    ></app-weather>
+    <app-hospital
+      [openData]="openData"
+      [icons]="icons"
+      *ngIf="openData?.hospitals"
+      class="course-container shadow pb-5 w-lg-50 w-md-75"
+    ></app-hospital>
     <div
       class="course-container shadow"
       *ngFor="let course of courses; trackBy: trackCourses"

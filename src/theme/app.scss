@@ -5,6 +5,7 @@ $grey: #3a5160;
   --color-darkgrey: #313a44;
   --color-nearlyBlack: #213333;
   --color-darkText: #253840;
+  --bs-success-rgb: 0, 214, 111;
   --color-username: $grey;
   --shadow-color: rgb(128, 128, 128, 0.6);
   --shadow-color2: rgb(158, 158, 158, 0.6);
@@ -31,15 +32,14 @@ $grey: #3a5160;
   }
 }
 
-
 ion-img {
   height: 100%;
   transition: all 0.3s;
   filter: invert(1) hue-rotate(25deg);
 }
 
-
-[data-theme="light"], body.light {
+[data-theme="light"],
+body.light {
   --ion-background-color: #f3f3f3;
   --ion-text-color: #000000;
   --ion-text-color-rgb: 0, 0, 0;
@@ -76,7 +76,8 @@ ion-img {
   --ion-card-background: #ffffff;
 }
 
-[data-theme="dark"], body.dark {
+[data-theme="dark"],
+body.dark {
   --ion-background-color-rgb: #111;
   --ion-text-color: #ffffff;
   --ion-text-color-rgb: 255, 255, 255;
@@ -198,3 +199,4 @@ body.light {
   background: #000 !important;
   mix-blend-mode: lighten;
 }
+
