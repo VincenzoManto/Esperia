@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { coursesList, News, typesIcons } from '../../models/course';
+import { coursesList, News, typesIcons, wmo_icons } from '../../models/course';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import { AppService } from '../../../../services/app.service';
@@ -17,6 +17,7 @@ export class ContentViewPage implements OnInit {
   courseSections: News[] = [];
   news$: Observable<any[]> | undefined;
   icons = typesIcons as any;
+  weatherIcons = wmo_icons as any;
   skip: Date | null = null;
   topics = [];
   openData: OpenData | undefined;
@@ -32,7 +33,7 @@ export class ContentViewPage implements OnInit {
     this.pushNotification.isSubscribed().subscribe((subscribed: any) => {
       this.topics = subscribed;
     });
-    this.openDataService.getData().subscribe((data) => {
+    this.openDataService.getData().then((data) => {
       this.openData = data;
     });
     this.load();

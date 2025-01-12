@@ -11,7 +11,6 @@ export const typesIcons = {
     'https://cdn3d.iconscout.com/3d/premium/thumb/travel-destination-3d-icon-download-in-png-blend-fbx-gltf-file-formats--tourist-location-beach-island-pack-holidays-icons-5410375.png?f=webp',
   sport:
     'https://cdn3d.iconscout.com/3d/premium/thumb/sports-equipment-3d-icon-download-in-png-blend-fbx-gltf-file-formats--sport-ball-basketball-rugby-badminton-racket-education-pack-school-icons-3342374.png?f=webp',
-
   entertainment: 'https://cdn3d.iconscout.com/3d/premium/thumb/art-3d-icon-download-in-png-blend-fbx-gltf-file-formats--drawing-paint-painting-education-pack-e-learning-icons-7322717.png?f=webp',
   job: 'https://cdn3d.iconscout.com/3d/premium/thumb/business-goal-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--target-investment-career-pack-illustrations-3010228.png?f=webp',
   education:
@@ -154,4 +153,13 @@ export interface Store extends Likeable {
   instagram: string;
   x: string;
   threads: string;
+}
+
+export const wmo_icons = {
+  0: 'https://cdn3d.iconscout.com/3d/premium/thumb/sunny-sun-3d-icon-download-in-png-blend-fbx-gltf-file-formats--day-sky-weather-pack-icons-5122320.png?f=webp',
+  1: 'https://cdn3d.iconscout.com/3d/premium/thumb/cloudy-weather-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--sunny-sun-light-pack-nature-illustrations-2754892.png?f=webp',
+  2: 'https://cdn3d.iconscout.com/3d/premium/thumb/cloud-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--forecast-weather-cloudy-nature-summer-pack-beach-illustrations-4615385.png?f=webp',
+  3: 'https://cdn3d.iconscout.com/3d/premium/thumb/rain-cloud-3d-icon-download-in-png-blend-fbx-gltf-file-formats--rainy-weather-spring-element-vol1-pack-nature-icons-6757336.png?f=webp',
+  4: 'https://cdn3d.iconscout.com/3d/premium/thumb/storm-clouds-3d-icon-download-in-png-blend-fbx-gltf-file-formats--thunder-rain-cloud-weather-pack-user-interface-icons-7151191.png?f=webp',
+  5: 'https://cdn3d.iconscout.com/3d/premium/thumb/snowy-weather-3d-icon-download-in-png-blend-fbx-gltf-file-formats--snowflake-cloudy-and-snow-rain-forecasts-pack-icons-3527452.png?f=webp',
 }

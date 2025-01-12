@@ -17,6 +17,8 @@ import { TopicsPage } from '../topics/topics.page';
 import { StarredPage } from '../starred/starred.page';
 import { FallbackDirective } from '../../../../directives/fallback.directive';
 import { DirectivesModule } from '../../../../directives/directives.module';
+import { IconWeatherComponent } from './icon-weather.component';
+import { WeatherWidget } from './weather.widget';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import { DirectivesModule } from '../../../../directives/directives.module';
     SearchPage,
     TopicsPage,
     MapPage,
+    WeatherWidget,
+    IconWeatherComponent,
     ShuffleArrayPipe,
     StoreCardComponent,
     NewsCardComponent,
