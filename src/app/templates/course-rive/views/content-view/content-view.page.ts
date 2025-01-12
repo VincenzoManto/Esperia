@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AppService } from '../../../../services/app.service';
 import { AnimationController } from '@ionic/angular';
 import { PushNotificationService } from '../../../../services/push-notification.service';
+import { OpenData, OpenDataService } from '../../../../services/open-data.service';
 
 @Component({
   selector: 'cr-content-view',
@@ -18,16 +19,21 @@ export class ContentViewPage implements OnInit {
   icons = typesIcons as any;
   skip: Date | null = null;
   topics = [];
+  openData: OpenData | undefined;
 
   constructor(
     private db: AngularFireDatabase,
     private appService: AppService,
+    private openDataService: OpenDataService,
     private cdref: ChangeDetectorRef,
     private pushNotification: PushNotificationService,
     public animationCtrl: AnimationController
   ) {
     this.pushNotification.isSubscribed().subscribe((subscribed: any) => {
       this.topics = subscribed;
+    });
+    this.openDataService.getData().subscribe((data) => {
+      this.openData = data;
     });
     this.load();
   }
