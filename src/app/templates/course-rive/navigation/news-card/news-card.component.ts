@@ -107,7 +107,7 @@ import { HttpClient } from '@angular/common/http';
           </canvas>
           <ion-text class="font-small">{{ section.likes || 0 }}</ion-text>
         </ion-col>
-        <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
+        <ion-col size="auto" *ngIf="section && !noRedirect" (click)="openStore(section)">
           <ion-img
             [src]="'https://img.icons8.com/plumpy/48/map-marker.png'"
             class="icon"
@@ -133,6 +133,7 @@ import { HttpClient } from '@angular/common/http';
 export class NewsCardComponent implements AfterViewInit {
   @Input() section?: News;
   @Output() save = new EventEmitter<News>();
+  @Input() noRedirect = false;
   opened = false;
   // Add your component logic here
 
@@ -181,9 +182,10 @@ export class NewsCardComponent implements AfterViewInit {
   }
 
   openStore(section: News) {
-    if (!section.storeNavigation) {
+    if (!section.storeNavigation || this.noRedirect) {
       return;
     }
+    section.storeNavigation.idx = section.store;
     this.appService.openStoreSubject.next(section.storeNavigation);
   }
 

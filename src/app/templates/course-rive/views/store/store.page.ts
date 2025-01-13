@@ -8,8 +8,11 @@ import {
   ViewChild,
 } from '@angular/core';
 import { AnimationController, IonModal, Platform } from '@ionic/angular';
-import { Store } from '../../models/course';
+import { News, Store } from '../../models/course';
 import { environment } from '../../../../../environments/environment';
+import { AppService } from '../../../../services/app.service';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { ContentViewPage } from '../content-view/content-view.page';
 declare var L: any;
 
 @Component({
@@ -23,6 +26,7 @@ export class StorePage implements OnInit {
   @ViewChild('closeBtn', { read: ElementRef }) closeBtnRef?: ElementRef;
 
   map = null;
+  lastNews: News[] = [];
   selectedStore?: Store | any;
 
   @Input() set store(s: Store) {
@@ -39,7 +43,7 @@ export class StorePage implements OnInit {
       if (!this.map) {
         this.map = L.map('map').setView(
           [response.latitude, response.longitude],
-          5
+          10
         );
       }
       const tiles = L.tileLayer(
@@ -62,6 +66,23 @@ export class StorePage implements OnInit {
         )
         .openPopup();
     }, 10);
+    const news$ = this.db
+      .list('/news', (ref) =>
+        ref.orderByChild('store').equalTo(s.idx!).limitToLast(3)
+      )
+      .valueChanges();
+    const sub = news$.subscribe((data: any) => {
+      this.lastNews = data;
+      const stores = this.appService.stores;
+      this.lastNews.forEach((e) => {
+        if (e.store !== undefined) {
+          e.storeNavigation = stores[e.store];
+        }
+        e.caption = ContentViewPage.cleanUrls(e.caption);
+        /* e.liked = likes.includes(e.idx); */
+      });
+      sub.unsubscribe();
+    });
   }
   @Output() closeStoreEvent = new EventEmitter();
 
@@ -70,6 +91,8 @@ export class StorePage implements OnInit {
 
   constructor(
     public platform: Platform,
+    private db: AngularFireDatabase,
+    private appService: AppService,
     private animationCtrl: AnimationController
   ) {}
 

@@ -40,10 +40,13 @@
     </div>
     <div class="spacer"></div>
 
-    <ion-text class="footer-text font-footnote">
-      Purchase includes access to 30+ courses, 240+ premium tutorials, 120+
-      hours of videos, source files and certificates.
-    </ion-text>
+    <h6 class="font-title2 text-center" *ngIf="lastNews?.length">Last news</h6>
+    <div class="row justify-content-center">
+      <cr-news-card class="col-12"
+      *ngFor="let news of lastNews"
+      [noRedirect]="true"
+      [section]="news"
+      ></cr-news-card>
   </div>
 
   <ion-button #closeBtn class="close-btn" (click)="onCloseStore()">

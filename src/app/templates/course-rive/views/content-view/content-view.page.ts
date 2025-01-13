@@ -39,7 +39,7 @@ export class ContentViewPage implements OnInit {
     this.load();
   }
 
-  cleanUrls(text: string) {
+  static cleanUrls(text: string) {
     const urlRegex = /(\bhttps?:\/\/[^\s<]+[^<.,:;"')\]\s])/g;
     const markdownLinkRegex =
       /\[([^\]]+)\]\((https?:\/\/[^\s<]+[^<.,:;"')\]\s])\)/g;
@@ -82,7 +82,7 @@ export class ContentViewPage implements OnInit {
           if (e.store !== undefined) {
             e.storeNavigation = stores[e.store];
           }
-          e.caption = this.cleanUrls(e.caption);
+          e.caption = ContentViewPage.cleanUrls(e.caption);
           e.liked = likes.includes(e.idx);
         });
         event?.target?.complete();

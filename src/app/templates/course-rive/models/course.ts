@@ -151,6 +151,7 @@ export interface Store extends Likeable {
   cap: string;
   lat: number;
   lng: number;
+  idx?: number;
   new?: boolean;
   phone: string;
   email: string;
