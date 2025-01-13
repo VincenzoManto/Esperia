@@ -27,6 +27,17 @@
       <ion-text>
         {{selectedStore?.description || 'The best shop ever'}}
       </ion-text>
+      <hr>
+      <ion-text>
+        <a href="tel:{{selectedStore?.phone}}" *ngIf="selectedStore?.phone">
+        <ion-icon name="call-outline"></ion-icon> {{selectedStore?.phone}}
+        </a>
+        <br>
+        <a href="mailto:{{selectedStore?.email}}" *ngIf="selectedStore?.email">
+          <ion-icon name="at-outline"></ion-icon> {{selectedStore?.email}}
+        </a>
+
+      </ion-text>
     </div>
     <div class="row justify-content-center p-2">
       <div class="col-auto" *ngFor="let social of ['facebook', 'instagram', 'telegram', 'x']" [class.d-none]="!selectedStore?.[social]">

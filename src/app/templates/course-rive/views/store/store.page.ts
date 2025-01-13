@@ -43,7 +43,7 @@ export class StorePage implements OnInit {
       if (!this.map) {
         this.map = L.map('map').setView(
           [response.latitude, response.longitude],
-          10
+          13
         );
       }
       const tiles = L.tileLayer(
