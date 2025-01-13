@@ -20,16 +20,20 @@ export const typesIcons = {
 
 export const coursesList: News[] = [
   {
-    title: 'Summer Sale Extravaganza',
+    title: 'Le Terre Piane',
     time: new Date('2023-06-15T09:00:00'),
     color: '#FF5733',
-    caption: 'Up to 50% off on all items!',
-    image: 'assets/course_rive/topic_1.svg',
+    caption: 'IL DISTRETTO TERRITORIALE DEL COMMERCIO',
+    cta: {
+      text: 'Join now',
+      url: 'https://www.leterrepiane.it/',
+    },
+    image: 'https://www.leterrepiane.it/frontend/images/menu-il-distretto.svg',
     idx: 0,
     likes: 0,
-    topics: ['fashion'],
+    topics: [],
   },
-
+/*
   {
     title: 'Gourmet Food Festival',
     time: new Date('2023-07-20T11:00:00'),
@@ -109,7 +113,7 @@ export const coursesList: News[] = [
     idx: 10,
     likes: 0,
     topics: ['education'],
-  },
+  }, */
 ];
 
 export interface News extends Likeable {
@@ -120,6 +124,10 @@ export interface News extends Likeable {
   color: string;
   new?: boolean;
   caption: string;
+  cta?: {
+    text: string;
+    url: string;
+  };
   preview?: any;
   subtitle?: string;
   image: string;

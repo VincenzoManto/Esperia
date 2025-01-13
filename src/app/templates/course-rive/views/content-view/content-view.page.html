@@ -5,6 +5,33 @@
   >
   <!-- Course VCard -->
   <div class="courses-list">
+
+    <div
+      class="course-container shadow"
+      [class.pb-5]="course.cta"
+      *ngFor="let course of courses; trackBy: trackCourses"
+      [style.--course-bg]="course.color"
+    >
+      <ion-img class="course-img" [src]="icons[course.topics[0]] || course.image"></ion-img>
+
+      <ion-text class="course-title font-title2">{{course.title}}</ion-text>
+      <ion-text class="course-subtitle font-body">
+        {{course.subtitle}}
+      </ion-text>
+      <ion-text class="course-caption font-footnote2">
+        {{course.caption.toUpperCase()}}
+      </ion-text>
+      <div class="spacer"></div>
+      <div class="position-absolute bottom-0 pb-4" *ngIf="course.cta">
+        <a
+          class="course-btn btn bg-light rounded-pill"
+          [href]="course.cta.url"
+        >
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+          {{course.cta.text}}
+      </a>
+      </div>
+    </div>
     <app-weather
       [openData]="openData"
       [icons]="weatherIcons"
@@ -17,22 +44,6 @@
       *ngIf="openData?.hospitals"
       class="course-container shadow pb-5 w-lg-50 w-md-75"
     ></app-hospital>
-    <div
-      class="course-container shadow"
-      *ngFor="let course of courses; trackBy: trackCourses"
-      [style.--course-bg]="course.color"
-    >
-      <ion-img class="course-img" [src]="icons[course.topics[0]]"></ion-img>
-
-      <ion-text class="course-title font-title2">{{course.title}}</ion-text>
-      <ion-text class="course-subtitle font-body">
-        {{course.subtitle}}
-      </ion-text>
-      <ion-text class="course-caption font-footnote2">
-        {{course.caption.toUpperCase()}}
-      </ion-text>
-      <div class="spacer"></div>
-    </div>
   </div>
 
   <ion-text class="recent-title title font-title3">Recent</ion-text>
