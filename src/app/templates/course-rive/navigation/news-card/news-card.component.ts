@@ -52,7 +52,7 @@ import { HttpClient } from '@angular/common/http';
           }}</ion-text>
           <div class="spacing"></div>
         </ion-col>
-        <ion-col size="2" class="ion-align-items-center">
+        <ion-col size="2" class="ion-align-items-center" (click)="openStore(section)">
           <img
             class="section-img"
             [src]="section.storeNavigation?.logo"

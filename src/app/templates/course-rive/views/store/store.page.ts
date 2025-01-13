@@ -23,7 +23,7 @@ export class StorePage implements OnInit {
   @ViewChild('closeBtn', { read: ElementRef }) closeBtnRef?: ElementRef;
 
   map = null;
-  selectedStore?: Store;
+  selectedStore?: Store | any;
 
   @Input() set store(s: Store) {
     this.selectedStore = s;
