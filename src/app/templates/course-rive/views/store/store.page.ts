@@ -28,6 +28,7 @@ export class StorePage implements OnInit {
   map = null;
   lastNews: News[] = [];
   selectedStore?: Store | any;
+  isFavorite = false;
 
   @Input() set store(s: Store) {
     this.selectedStore = s;
@@ -39,6 +40,10 @@ export class StorePage implements OnInit {
       latitude: s.lat || environment.baseLatLng[0],
       longitude: s.lng || environment.baseLatLng[1],
     };
+    const stores = JSON.parse(localStorage.getItem('stores') || '[]');
+    if (stores.includes(s.id)) {
+      this.isFavorite = true;
+    }
     setTimeout(() => {
       if (!this.map) {
         this.map = L.map('map').setView(
@@ -162,4 +167,17 @@ export class StorePage implements OnInit {
   leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
+
+
+  like() {
+    this.isFavorite = !this.isFavorite;
+    this.selectedStore.liked = this.isFavorite;
+    const stores = JSON.parse(localStorage.getItem('stores') || '[]');
+    if (this.selectedStore.liked) {
+      stores.push(this.selectedStore.id);
+    } else {
+      stores.splice(stores.indexOf(this.selectedStore.id), 1);
+    }
+    localStorage.setItem('stores', JSON.stringify(stores));
+  }
 }

@@ -19,60 +19,82 @@
   <div #container class="content-container">
     <ion-img [src]="selectedStore?.logo" class="thumb"></ion-img>
     <div class="title">
-      <ion-text>{{
-        selectedStore?.name || 'Design+Code Store'
-      }}</ion-text>
+      <ion-text>{{ selectedStore?.name || 'Design+Code Store' }}
+
+        <button
+        class="btn rounded-pill m-auto"
+        [class.btn-warning]="isFavorite"
+        [class.btn-light]="!isFavorite"
+        (click)="like()"
+      >
+        <ion-img
+          [src]="
+          isFavorite
+          ? 'https://img.icons8.com/plumpy/48/filled-star.png'
+          : 'https://img.icons8.com/plumpy/48/star.png'
+      "
+          class="icon"
+        ></ion-img
+        >&emsp;
+      </button>
+      </ion-text>
     </div>
     <div class="subtitle font-body">
       <ion-text>
         {{selectedStore?.description || 'The best shop ever'}}
       </ion-text>
-      <hr>
+      <hr />
       <ion-text>
         <a href="tel:{{selectedStore?.phone}}" *ngIf="selectedStore?.phone">
-        <ion-icon name="call-outline"></ion-icon> {{selectedStore?.phone}}
+          <ion-icon name="call-outline"></ion-icon> {{selectedStore?.phone}}
         </a>
-        <br>
+        <br />
         <a href="mailto:{{selectedStore?.email}}" *ngIf="selectedStore?.email">
           <ion-icon name="at-outline"></ion-icon> {{selectedStore?.email}}
         </a>
-
       </ion-text>
     </div>
     <div class="row justify-content-center p-2">
-      <div class="col-auto" *ngFor="let social of ['facebook', 'instagram', 'telegram', 'x']" [class.d-none]="!selectedStore?.[social]">
+      <div
+        class="col-auto"
+        *ngFor="let social of ['facebook', 'instagram', 'telegram', 'x']"
+        [class.d-none]="!selectedStore?.[social]"
+      >
         <a class="social-btn" [href]="selectedStore?.[social]">
           <ion-icon name="logo-{{social}}"></ion-icon>
         </a>
       </div>
     </div>
     <div class="map-container">
-      <div id="map" style="width: 100%; height: 100%;"></div>
+      <div id="map" style="width: 100%; height: 100%"></div>
     </div>
+    <div class="spacer"></div>
+
     <div class="spacer"></div>
 
     <h6 class="font-title2 text-center" *ngIf="lastNews?.length">Last news</h6>
     <div class="row justify-content-center">
-      <cr-news-card class="col-12"
-      *ngFor="let news of lastNews"
-      [noRedirect]="true"
-      [section]="news"
+      <cr-news-card
+        class="col-12"
+        *ngFor="let news of lastNews"
+        [noRedirect]="true"
+        [section]="news"
       ></cr-news-card>
+    </div>
+
+    <ion-button #closeBtn class="close-btn" (click)="onCloseStore()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+
+    <ion-modal
+      #modal
+      backdropDismiss="false"
+      [enterAnimation]="enterAnimation"
+      [leaveAnimation]="leaveAnimation"
+    >
+      <ng-template>
+        <div class="ion-page"></div>
+      </ng-template>
+    </ion-modal>
   </div>
-
-  <ion-button #closeBtn class="close-btn" (click)="onCloseStore()">
-    <ion-icon name="close-outline"></ion-icon>
-  </ion-button>
-
-  <ion-modal
-    #modal
-    backdropDismiss="false"
-    [enterAnimation]="enterAnimation"
-    [leaveAnimation]="leaveAnimation"
-  >
-    <ng-template>
-      <div class="ion-page">
-      </div>
-    </ng-template>
-  </ion-modal>
 </div>

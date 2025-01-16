@@ -19,9 +19,13 @@ declare var L: any;
 export class StarredPage {
 
   news: News[] = [];
+  stores: Store[] = [];
 
   constructor(private db: AngularFireDatabase, private appService: AppService, private http: HttpClient) {
     const likes = JSON.parse(localStorage.getItem('likes') || '[]');
+    const stores = JSON.parse(localStorage.getItem('stores') || '[]');
+    this.stores = this.appService.stores.filter((e: Store) => stores.includes(e.idx));
+
     const news$ = this.db.list('/news', (ref) => ref.orderByChild('time')).valueChanges();
     const s = news$.subscribe((data: any) => {
       this.news = data.filter((e: News) => likes.includes(e.idx));

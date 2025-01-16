@@ -4,6 +4,7 @@ import { AppService } from '../../../../services/app.service';
 import { AnimationController } from '@ionic/angular';
 import * as QRCode from 'qrcode';
 import { IonModal } from '@ionic/angular/common';
+import { RiveSMInput } from 'ng-rive';
 
 @Component({
   selector: 'cr-store-card',
@@ -23,10 +24,11 @@ import { IonModal } from '@ionic/angular/common';
       <ion-row class="ion-justify-content-between">
         <ion-col size="auto">
           <ion-img
+            (click)="like(section)"
             [src]="
               section.liked
-                ? 'https://img.icons8.com/material-sharp/24/melting-hert.png'
-                : 'https://img.icons8.com/material-two-tone/48/melting-hert.png'
+                ? 'https://img.icons8.com/plumpy/48/filled-star.png'
+                : 'https://img.icons8.com/plumpy/48/star.png'
             "
             class="icon"
           ></ion-img>
@@ -54,7 +56,7 @@ import { IonModal } from '@ionic/angular/common';
       [leaveAnimation]="leaveAnimation"
     >
       <ng-template>
-        <div class="ion-page pointer-events-none"   (click)="closeQr()">
+        <div class="ion-page pointer-events-none" (click)="closeQr()">
           <div class="w-50 h-auto rounded-3 m-auto mb-1 bg-white p-3">
             <ion-img class="section-img" [src]="section?.logo"></ion-img>
           </div>
@@ -126,4 +128,16 @@ export class StoreCardComponent {
   leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
+
+  like(section: Store) {
+
+    section.liked = !section.liked || false;
+    const stores = JSON.parse(localStorage.getItem('stores') || '[]');
+    if (section.liked) {
+      stores.push(section.idx);
+    } else {
+      stores.splice(stores.indexOf(section.idx), 1);
+    }
+    localStorage.setItem('stores', JSON.stringify(stores));
+  }
 }
