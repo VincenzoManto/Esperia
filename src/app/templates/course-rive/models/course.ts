@@ -25,7 +25,7 @@ export const coursesList: News[] = [
     color: '#FF5733',
     caption: 'IL DISTRETTO TERRITORIALE DEL COMMERCIO',
     cta: {
-      text: 'Join now',
+      text: 'Navigate',
       url: 'https://www.leterrepiane.it/',
     },
     image: 'https://www.leterrepiane.it/frontend/images/menu-il-distretto.svg',

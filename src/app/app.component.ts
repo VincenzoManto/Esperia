@@ -17,6 +17,7 @@ import { PushNotificationService } from './services/push-notification.service';
 import { SwUpdate, SwPush } from '@angular/service-worker';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { setPersistence, browserLocalPersistence, inMemoryPersistence, getAuth } from 'firebase/auth';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,14 @@ export class AppComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private pushService: PushNotificationService,
     private notificationService: NotificationService,
+    private translate: TranslateService
   ) {
+
+    this.translate.setDefaultLang('it');
+
+    this.translate.use(localStorage.getItem('dialect') === 'true' ? 've' : 'it');
+
+
     this.db.list('/stores').valueChanges().subscribe((data: any[]) => {
       this.appService.stores = data;
       this.appService.storesSubject.next(data);

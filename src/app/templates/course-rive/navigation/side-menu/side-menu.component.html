@@ -7,14 +7,16 @@
       <ion-text class="font-body">Esperia</ion-text>
       <br />
       <ion-text class="user-profession font-subheadline">
-        Search for district stores
+        {{'SearchFor' | translateX}}
       </ion-text>
     </ion-col>
   </ion-row>
 
   <div class="sections-container">
     <div class="menu-list-section">
-      <ion-text class="browse-heading font-subheadline2">BROWSE</ion-text>
+      <ion-text class="browse-heading font-subheadline2 text-uppercase">
+        {{'Browse' | translateX}}
+      </ion-text>
       <div class="menu-btn-list-container">
         <cr-menu-row
           #menuItems
@@ -25,7 +27,7 @@
       </div>
     </div>
 
-    <div class="menu-list-section">
+<!--     <div class="menu-list-section">
       <ion-text class="browse-heading font-subheadline2">HISTORY</ion-text>
       <div class="menu-btn-list-container">
         <cr-menu-row
@@ -39,7 +41,7 @@
           (onPress)="onMenuItemPress(i + 4, menu)"
         ></cr-menu-row>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="spacer"></div>
@@ -71,13 +73,39 @@
         </canvas>
       </div>
       <ion-toggle
-        class="font-headline"
+      class="font-headline d-block"
+
         justify="space-between"
         mode="ios"
         [(ngModel)]="isDarkMode"
         (ionChange)="onDarkModeToggle()"
       >
-        Dark Mode
+        {{'DarkMode' | translateX}}
+      </ion-toggle>
+    </ion-item>
+    <ion-item class="dark-mode-container" lines="none">
+      <div class="icon-container">
+        <canvas
+          riv="icons"
+          [artboard]="menuItems3[1].artboard"
+          width="32"
+          height="32"
+          *ngIf="menuItems3[1].show"
+        >
+          <riv-state-machine [name]="menuItems3[1].stateMachine" play>
+            <riv-input name="active" [value]="menuItems3[1].status"></riv-input>
+          </riv-state-machine>
+        </canvas>
+      </div>
+      <ion-toggle
+      class="font-headline d-block"
+
+        justify="space-between"
+        mode="ios"
+        [(ngModel)]="isDialect"
+        (ionChange)="onDialectToggle()"
+      >
+        {{'Dialect' | translateX}}
       </ion-toggle>
     </ion-item>
   </div>

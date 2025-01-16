@@ -13,6 +13,7 @@ import { OnBoardingPageModule } from './views/on-boarding/on-boarding.module';
 import { ContentViewPageModule } from './views/content-view/content-view.module';
 import { MenuRowComponent } from './navigation/side-menu/menu-row/menu-row.component';
 import { StorePageModule } from './views/store/store.module';
+import { DirectivesModule } from '../../directives/directives.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { StorePageModule } from './views/store/store.module';
     OnBoardingPageModule,
     StorePageModule,
     ContentViewPageModule,
+    DirectivesModule
   ],
   declarations: [
     CourseRivePage,

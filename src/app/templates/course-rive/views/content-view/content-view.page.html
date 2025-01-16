@@ -1,7 +1,9 @@
 <div (scroll)="onScroll($event)">
   <ion-text
     class="courses-list-title title font-largeTitle d-block w-100 text-center"
-    >Esperia Home</ion-text
+    >
+    {{'EsperiaHome' | translateX}}
+    </ion-text
   >
   <!-- Course VCard -->
   <div class="courses-list">
@@ -28,7 +30,7 @@
           [href]="course.cta.url"
         >
           <ion-icon name="arrow-forward-outline"></ion-icon>
-          {{course.cta.text}}
+          {{course.cta.text | translateX}}
       </a>
       </div>
     </div>
@@ -46,7 +48,7 @@
     ></app-hospital>
   </div>
 
-  <ion-text class="recent-title title font-title3">Recent</ion-text>
+  <ion-text class="recent-title title font-title3">{{'Recent' | translateX}}</ion-text>
   <!-- Recent course Section -->
   <div class="section-list">
     <ion-refresher id="refresher" slot="fixed" (ionRefresh)="load($event)">

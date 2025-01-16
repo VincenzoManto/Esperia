@@ -29,7 +29,7 @@ export const menuItemsList: MenuItem[] = [
     show: false,
   },
   {
-    id: 'Favorites',
+    id: 'Topics',
     url: '/topics',
     stateMachine: 'STAR_Interactivity',
     artboard: 'LIKE/STAR',
@@ -38,7 +38,7 @@ export const menuItemsList: MenuItem[] = [
     show: false,
   },
   {
-    id: 'Starred',
+    id: 'Favorites',
     url: '/starred',
     stateMachine: 'CHAT_Interactivity',
     artboard: 'CHAT',
@@ -68,6 +68,13 @@ export const menuItems2List: MenuItem[] = [
 export const menuItems3List: MenuItem[] = [
   {
     id: 'Dark Mode',
+    stateMachine: 'SETTINGS_Interactivity',
+    artboard: 'SETTINGS',
+    status: false,
+    show: false,
+  },
+  {
+    id: 'Dialect',
     stateMachine: 'SETTINGS_Interactivity',
     artboard: 'SETTINGS',
     status: false,

@@ -1,18 +1,24 @@
 <div class="p-2">
   <ion-text class="courses-list-title title font-largeTitle text-center w-100 d-block"
-    >Search</ion-text
+    >
+    {{'Search' | translateX}}
+    </ion-text
   >
   <ion-searchbar
-    placeholder="Search courses"
+    placeholder="{{'Search' | translateX}}"
     (ionInput)="search($event)"
   ></ion-searchbar>
-  <ion-text class="font-title text-center d-block w-100" *ngIf="stores.length">Stores</ion-text>
+  <ion-text class="font-title text-center d-block w-100" *ngIf="stores.length">
+    {{'Stores' | translateX}}
+  </ion-text>
   <ion-list>
     <ion-item *ngFor="let store of stores" class="bg-transparent">
       <cr-store-card class="w-100" [section]="store"></cr-store-card>
     </ion-item>
   </ion-list>
-  <ion-text class="font-title text-center d-block w-100" *ngIf="news.length">News</ion-text>
+  <ion-text class="font-title text-center d-block w-100" *ngIf="news.length">
+    {{'News' | translateX}}
+  </ion-text>
 
   <ion-list>
     <ion-item *ngFor="let news of news" class="bg-transparent">
@@ -24,7 +30,7 @@
     <ion-img
       class="m-auto mb-2"
       src="https://ouch-cdn2.icons8.com/-iQqxrxT61dfH3LPTMZXI-n9cbeEau7XAB2Yg5iFLTM/rs:fit:368:337/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTY5/L2EyZDkzYzk4LTli/MjgtNGExNC1iODU1/LTNiZDA0YThkNDVk/YS5wbmc.png"
-      style="width: 50vmin"
+      style="width: 50vmin; filter: none"
     ></ion-img>
     <ion-text class="font-body">
       <ion-img
@@ -32,7 +38,7 @@
         class="icon"
       ></ion-img>
 
-      Such empty, much wow!</ion-text
+      {{'SuchEmptiness' | translateX}}</ion-text
     >
   </h3>
 </div>

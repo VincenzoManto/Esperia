@@ -13,6 +13,7 @@ import {
   menuItemsList,
 } from '../../models/side-menu';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'cr-side-menu',
@@ -31,16 +32,19 @@ export class SideMenuComponent implements OnInit {
 
   selectedMenu = this.menuItems[0];
   isDarkMode = false;
+  isDialect = false;
   darkLink: HTMLMetaElement;
 
   constructor(
     private animationCtrl: AnimationController,
     private navigation: NavController,
     public platform: Platform,
-    public router: Router
+    public router: Router,
+    private translate: TranslateService
   ) {
     this.darkLink = document.head.querySelector('meta[name="color-scheme"]')!;
     this.setTheme(localStorage.getItem('light') !== 'true');
+    this.isDialect = localStorage.getItem('dialect') === 'true';
   }
 
   ngOnInit() {
@@ -102,6 +106,14 @@ export class SideMenuComponent implements OnInit {
   onDarkModeToggle() {
     this.menuItems3[0].status = this.isDarkMode;
     this.setTheme(this.isDarkMode);
+  }
+
+  onDialectToggle() {
+    this.menuItems3[1].status = this.isDialect;
+    localStorage.setItem('dialect', this.isDialect ? 'true' : 'false');
+    if (this.isDialect) {
+      this.translate.use('ve');
+    }
   }
 
   setTheme(isDark: boolean) {
