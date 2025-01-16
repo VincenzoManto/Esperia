@@ -23,47 +23,45 @@ export class MapPage implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-
     this.originalStores = this.appService.stores;
   }
 
   ngAfterViewInit() {
-
     setTimeout(() => {
       if (!this.map) {
-        this.map = L.map('map-entire').setView(
-          environment.baseLatLng,
-          5
-        );
+        this.map = L.map('map-entire').setView(environment.baseLatLng, 5);
       }
       const tiles = L.tileLayer(
-'https://api.mapbox.com/styles/v1/vincenzomanto/ck6t6fp9o0egt1is0ptkeq1pq/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmluY2Vuem9tYW50byIsImEiOiJjazZ0M25xNHkwM2s4M2xteWhrbjc3NmVyIn0.B7-ezeH4aCuy3W4WSWpeuQ',
+        'https://api.mapbox.com/styles/v1/vincenzomanto/ck6t6fp9o0egt1is0ptkeq1pq/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmluY2Vuem9tYW50byIsImEiOiJjazZ0M25xNHkwM2s4M2xteWhrbjc3NmVyIn0.B7-ezeH4aCuy3W4WSWpeuQ',
         {
           maxZoom: 19,
         }
       ).addTo(this.map);
 
       this.originalStores.forEach((s: Store) => {
+        if (!(s.lat && s.lng)) {
+          return;
+        }
         const response = {
           ...s,
-          latitude: 56.9497,
-          longitude: 24.1042,
+          latitude: s.lat,
+          longitude: s.lng,
         };
-      const marker = L.marker([response.latitude, response.longitude])
-        .addTo(this.map)
-        .bindPopup(
-          `<b>${response.name}
+        const marker = L.marker([response.latitude, response.longitude])
+          .addTo(this.map)
+          .bindPopup(
+            `<b>${response.name}
             <img src="${response.logo.toLowerCase()}"
             crossorigin="anonymous"
                 height="12"
-                alt="${response.name}"> ${response.city}</b><br>${response.address}`
-        )
-        .openPopup();
-
+                alt="${response.name}"> ${response.city}</b><br>${
+              response.address
+            }`
+          )
+          .openPopup();
       });
-    }, 10)
+    }, 10);
   }
-
 
   search(term: SearchbarCustomEvent) {
     if (!term?.detail?.value || term?.detail?.value.trim().length < 2) {
@@ -73,7 +71,6 @@ export class MapPage implements OnInit, AfterViewInit {
 
     this.stores = this.fuseSearch(this.originalStores, query);
   }
-
 
   fuseSearch(news: (News | Store)[], query: string) {
     const fuseOptions = {

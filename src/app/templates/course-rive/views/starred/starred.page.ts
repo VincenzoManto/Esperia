@@ -24,7 +24,7 @@ export class StarredPage {
   constructor(private db: AngularFireDatabase, private appService: AppService, private http: HttpClient) {
     const likes = JSON.parse(localStorage.getItem('likes') || '[]');
     const stores = JSON.parse(localStorage.getItem('stores') || '[]');
-    this.stores = this.appService.stores.filter((e: Store) => stores.includes(e.idx));
+    this.stores = this.appService.stores.filter((e: Store) => stores.includes(e.id));
 
     const news$ = this.db.list('/news', (ref) => ref.orderByChild('time')).valueChanges();
     const s = news$.subscribe((data: any) => {

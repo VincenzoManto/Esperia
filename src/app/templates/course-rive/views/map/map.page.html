@@ -1,7 +1,12 @@
 <div class="wrapper">
+  <ion-text class="courses-list-title title font-largeTitle text-center w-100 d-block"
+  >
+  {{'Map' | translateX}}
+  </ion-text
+>
   <div class="p-2">
     <ion-searchbar
-      placeholder="Search courses"
+      placeholder="{{'Search' | translateX}}"
       (ionInput)="search($event)"
     ></ion-searchbar>
   </div>

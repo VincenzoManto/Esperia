@@ -113,3 +113,7 @@ cr-on-boarding, cr-store {
   height: 100%;
   display: block;
 }
+
+.h-full {
+  height: calc(100vh - 1rem);
+}

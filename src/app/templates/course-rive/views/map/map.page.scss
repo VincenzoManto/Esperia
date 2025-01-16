@@ -8,6 +8,11 @@ ion-list {
     background: #fff3;
     border-radius: 50px;
   }
+  input.searchbar-input {
+    border-radius: 30px !important;
+
+    box-shadow: var(--bs-box-shadow) !important;
+}
 }
 .wrapper {
   display: flex;

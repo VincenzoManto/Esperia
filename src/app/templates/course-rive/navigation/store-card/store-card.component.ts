@@ -36,13 +36,13 @@ import { RiveSMInput } from 'ng-rive';
         </ion-col>
         <ion-col size="auto" *ngIf="section" (click)="openStore(section)">
           <ion-img
-            [src]="'https://img.icons8.com/material-two-tone/24/map-marker.png'"
+            [src]="'https://img.icons8.com/plumpy/24/map-marker.png'"
             class="icon"
           ></ion-img>
         </ion-col>
         <ion-col size="auto" (click)="openQr()">
           <ion-img
-            [src]="'https://img.icons8.com/material-two-tone/24/qr-code.png'"
+            [src]="'https://img.icons8.com/plumpy/24/qr-code.png'"
             class="icon"
           ></ion-img>
         </ion-col>
