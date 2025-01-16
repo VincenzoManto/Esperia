@@ -28,7 +28,7 @@ export const coursesList: News[] = [
       text: 'Navigate',
       url: 'https://www.leterrepiane.it/',
     },
-    image: 'https://www.leterrepiane.it/frontend/images/menu-il-distretto.svg',
+    image: 'assets/icon/logo.png',
     idx: 0,
     likes: 0,
     topics: [],
