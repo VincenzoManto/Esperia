@@ -9,7 +9,7 @@ import { OpenData } from '../../../../services/open-data.service';
   <ion-img class="course-img" [src]="icons[openData.weather.current.weather_code]"></ion-img>
 
   <ion-text class="course-title font-title2">
-    Near Verona
+    {{'NearVerona' | translateX}}
   </ion-text>
   <ion-text class="course-subtitle font-title">
     {{openData.weather.current.temperature_2m | number}}°C
@@ -43,7 +43,7 @@ import { OpenData } from '../../../../services/open-data.service';
       <app-icon-weather icon="cloud-lighting--v1"/>  {{openData.weather.current.showers}} mm
     </ion-text>
     <ion-text class="weather-detail font-body mt-2">
-      Up to {{openData.weather.current.time | date: 'dd/MM/yyyy HH:mm'}}
+      {{'UpTo' | translateX}} {{openData.weather.current.time | date: 'dd/MM/yyyy HH:mm'}}
     </ion-text>
   </div>
   <div class="bg-danger weather-alert font-body text-center" *ngIf="openData.weather.alert">

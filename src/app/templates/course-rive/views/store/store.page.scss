@@ -1,5 +1,5 @@
 .main-container {
-  background: #111;
+  background: var(--ion-background-color);
 }
 
 ion-img.bg-spline {
@@ -64,7 +64,6 @@ div.content-container {
     max-width: 260px;
 
     ion-text {
-      color: rgb(255, 255, 255);
       font-size: 40px;
       font-family: Poppins-Bold;
     }
@@ -74,7 +73,7 @@ div.content-container {
     margin: 16px 0px;
 
     ion-text {
-      color: rgba(255, 255, 255, 0.7);
+      opacity: 0.7;
     }
   }
 
