@@ -114,6 +114,7 @@ export class SideMenuComponent implements OnInit {
     if (this.isDialect) {
       this.translate.use('ve');
     }
+    location.reload();
   }
 
   setTheme(isDark: boolean) {
