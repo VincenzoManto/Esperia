@@ -23,7 +23,6 @@ import { IonModal } from '@ionic/angular/common';
     <div class="section-container shadow" *ngIf="section">
       <img
         fallback-src
-        crossorigin="anonymous"
         [src]="section.image"
         class="img"
         *ngIf="section.image"
