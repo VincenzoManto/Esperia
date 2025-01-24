@@ -203,6 +203,7 @@ export class NewsCardComponent implements AfterViewInit {
       section.likes++;
       triggerConfetti.fire();
     }
+    section.likes = Math.max(0, section.likes);
     section.liked = !section.liked || false;
     this.save.emit(section);
   }
