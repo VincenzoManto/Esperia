@@ -17,7 +17,6 @@ export class FallbackDirective{
   }
 
   @HostListener('error') onError() {
-    // this.src = this.defaultImg;
     this.elementRef.nativeElement.style.display = 'none';
   }
 }

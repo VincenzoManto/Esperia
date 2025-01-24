@@ -23,10 +23,12 @@ import { IonModal } from '@ionic/angular/common';
     <div class="section-container shadow" *ngIf="section">
       <img
         fallback-src
+        crossorigin="anonymous"
         [src]="section.image"
         class="img"
         *ngIf="section.image"
       />
+
       <ion-card *ngIf="section.preview" class="w-100 m-0 rounded mb-2">
         <ion-card-content>
           <div class="row align-items-center">
@@ -186,10 +188,10 @@ export class NewsCardComponent implements AfterViewInit {
       this.section.html = converter.makeHtml(this.section?.caption);
     }
 
-    if (this.section?.image && !this.section?.image?.startsWith('https://')) {
+/*     if (this.section?.image && this.section?.image?.includes('instagram.com')) {
       this.section.image =
         environment.api + 'image.php?p=' + this.section.image;
-    }
+    } */
     if (this.section && !this.section?.liked) {
       const likes = JSON.parse(localStorage.getItem('likes') || '[]');
       this.section.liked = likes.includes(this.section.idx);
