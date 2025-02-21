@@ -1,0 +1,20 @@
+{
+  "name": "Esperia",
+  "short_name": "Esperia",
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
+  "display": "standalone",
+  "scope": "./",
+  "version": "1.0.103",
+  "start_url": "./",
+  "icons": [
+
+    {
+      "src": "assets/icon/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "gcm_sender_id": "338729314582"
+}
