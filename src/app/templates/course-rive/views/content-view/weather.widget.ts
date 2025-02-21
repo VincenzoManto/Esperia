@@ -33,7 +33,7 @@ import { OpenData } from '../../../../services/open-data.service';
     </ion-text>
     <ion-text class="weather-detail font-body">
       <app-icon-weather icon="sunset"/>
-      {{openData.weather.daily?.daylight_duration?.[0] || 45000}} s
+      {{openData.weather.daily.daylight_duration[0] || 45000}} s
     </ion-text>
     <ion-text class="weather-detail font-body">
       <app-icon-weather icon="rain"/>  {{openData.weather.current.precipitation}} mm
