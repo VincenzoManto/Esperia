@@ -31,7 +31,7 @@ export class PushNotificationService {
         console.log('Permission granted');
       else if (permission === 'denied')
         console.log('Permission denied');
-
+    });
 
     navigator.serviceWorker.register('/Esperia/firebase-messaging-sw.js')
     .then((registration) => {
