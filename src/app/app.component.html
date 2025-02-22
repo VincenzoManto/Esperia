@@ -1,3 +1,23 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
+
+<ion-modal is-open="true" *ngIf="installPrompt">
+  <ng-template>
+    <div class="modal-content bg-dark text-light p-3">
+      <div class="card">
+        <div class="card-body">
+
+          <h2>Installami!</h2>
+          <p>
+            Questa è una PWA, installami sul tuo dispositivo per poter accedere
+            più velocemente.
+          </p>
+          <button (click)="install()" class="btn btn-primary">
+            Installa
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

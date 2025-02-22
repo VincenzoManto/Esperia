@@ -27,6 +27,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   // https://github.com/ionic-team/ionic-framework/issues/21630#issuecomment-683007162
   @ViewChild(IonRouterOutlet, { static: true }) routerOutlet?: IonRouterOutlet;
+  installPrompt: any;
 
   constructor(private platform: Platform, private db: AngularFireDatabase, private appService: AppService,
     private swUpdate: SwUpdate,
@@ -37,6 +38,12 @@ export class AppComponent implements OnInit {
     private translate: TranslateService
   ) {
 
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+      window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        this.installPrompt = event;
+      });
+    }
     this.translate.setDefaultLang('it');
 
     this.translate.use(localStorage.getItem('dialect') === 'true' ? 've' : 'it');
@@ -62,6 +69,15 @@ export class AppComponent implements OnInit {
 
       await setPersistence(getAuth(e), browserLocalPersistence);
     });
+  }
+
+  async install() {
+    if (!this.installPrompt) {
+      return;
+    }
+    const result = await this.installPrompt.prompt();
+    console.log(`Install prompt was: ${result.outcome}`);
+    this.installPrompt = null;
   }
 
   ngOnInit() {
