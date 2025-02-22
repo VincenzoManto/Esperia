@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 import { App } from '@capacitor/app';
 import { StatusBar } from '@capacitor/status-bar';
@@ -28,20 +28,31 @@ export class AppComponent implements OnInit {
   // https://github.com/ionic-team/ionic-framework/issues/21630#issuecomment-683007162
   @ViewChild(IonRouterOutlet, { static: true }) routerOutlet?: IonRouterOutlet;
   installPrompt: any;
+  ios = false;
 
   constructor(private platform: Platform, private db: AngularFireDatabase, private appService: AppService,
     private swUpdate: SwUpdate,
     private swPush: SwPush,
     private afAuth: AngularFireAuth,
     private pushService: PushNotificationService,
-    private notificationService: NotificationService,
     private translate: TranslateService
   ) {
 
+    this.ios = this.platform.is('ios');
+    this.installPrompt = this.ios ? {} : null;
+
+    window.addEventListener("appinstalled", () => {
+      console.log('app installed');
+      this.installPrompt = null;
+    });
     if (!window.matchMedia('(display-mode: standalone)').matches) {
-      window.addEventListener("beforeinstallprompt", (event) => {
+      window.addEventListener("beforeinstallprompt", (event: any) => {
+        console.log('beforeinstallprompt fired');
+        if (localStorage.getItem('uninstalled') === 'true' && Math.random() > 0.25) {
+          return;
+        }
         event.preventDefault();
-        this.installPrompt = event;
+        this.installPrompt =  event;
       });
     }
     this.translate.setDefaultLang('it');
@@ -87,6 +98,10 @@ export class AppComponent implements OnInit {
       console.log('PWA is not installed');
     }
     this.pushService.activate();
+  }
+
+  setUninstalled() {
+    localStorage.setItem('uninstalled', 'true');
   }
 
 
