@@ -21,13 +21,17 @@ export class PushNotificationService {
   pToken: string | undefined;
 
   activate(): void {
+    if (!('Notification' in window)) {
+      console.log('Notifications not available');
+      return;
+    }
     // Request permission to receive notifications
     Notification.requestPermission().then((permission) => {
       if (permission === 'granted')
         console.log('Permission granted');
       else if (permission === 'denied')
         console.log('Permission denied');
-    });
+
 
     navigator.serviceWorker.register('/Esperia/firebase-messaging-sw.js')
     .then((registration) => {
