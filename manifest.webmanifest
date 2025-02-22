@@ -5,8 +5,29 @@
   "background_color": "#09090b",
   "display": "standalone",
   "scope": "./",
-  "version": "1.0.103",
+  "version": "1.1.216",
   "start_url": "./",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 496
+  },
+  "screenshots": [
+    {
+      "src": "assets/icon/favicon.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/icon/favicon.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "platform": "mobile"
+    }
+  ],
   "icons": [
 
     {
@@ -16,5 +37,14 @@
       "purpose": "maskable any"
     }
   ],
-  "gcm_sender_id": "YOUR_SENDER_ID"
+  "widgets": [
+    {
+      "name": "Initial Page",
+      "description": "Shows the initial page of the app",
+      "url": "./index.html",
+      "width": 300,
+      "height": 200
+    }
+  ],
+  "gcm_sender_id": "338729314582"
 }
