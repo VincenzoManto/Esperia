@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationService {
   constructor() {
-    this.startNotificationTimer();
   }
 
   startNotificationTimer() {

@@ -65,6 +65,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log('PWA is installed');
+    } else {
+      console.log('PWA is not installed');
+    }
     this.pushService.activate();
   }
 
