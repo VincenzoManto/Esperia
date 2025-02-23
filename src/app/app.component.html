@@ -46,7 +46,7 @@
 
 <ion-modal
   is-open="true"
-  *ngIf="ios"
+  *ngIf="ios && installPrompt"
   (ionModalDidDismiss)="installPrompt = null; setUninstalled()"
 >
   <ng-template>
