@@ -200,3 +200,7 @@ body.light {
   mix-blend-mode: lighten;
 }
 
+
+.no-invert {
+  filter: none !important;
+}

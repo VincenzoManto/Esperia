@@ -177,7 +177,7 @@ export class NewsCardComponent implements AfterViewInit {
     if (this.section) {
       let converter = new showdown.Converter();
       if (!this.section.image) {
-        const urlMatch = this.section.caption.match(/\[.*\]\((.*)\)/);
+        const urlMatch = this.section.caption?.match(/\[.*\]\((.*)\)/);
         if (urlMatch) {
           try {
             this.section.preview = await this.getMetdata(urlMatch[1]);

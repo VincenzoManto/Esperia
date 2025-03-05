@@ -18,7 +18,7 @@ import { RiveSMInput } from 'ng-rive';
           <ion-text class="font-body">{{ section.name }}</ion-text>
         </ion-col>
         <ion-col size="auto" class="ion-align-items-center">
-          <ion-img class="section-img" [src]="section.logo"></ion-img>
+          <ion-img class="section-img no-invert" [src]="section.logo"></ion-img>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-between">
@@ -58,7 +58,7 @@ import { RiveSMInput } from 'ng-rive';
       <ng-template>
         <div class="ion-page pointer-events-none" (click)="closeQr()">
           <div class="w-50 h-auto rounded-3 m-auto mb-1 bg-white p-3">
-            <ion-img class="section-img" [src]="section?.logo"></ion-img>
+            <ion-img class="section-img no-invert" [src]="section?.logo"></ion-img>
           </div>
           <canvas
             id="canvas"

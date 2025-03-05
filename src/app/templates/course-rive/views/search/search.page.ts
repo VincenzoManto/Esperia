@@ -41,6 +41,7 @@ export class SearchPage {
           );
     api.valueChanges().subscribe((data: any[]) => {
       this.originalStores = this.appService.stores;
+      this.stores = this.originalStores;
       this.originalNews = addNavs(this.originalStores, data);
       this.news = addNavs(this.originalStores, this.originalNews);
     });
