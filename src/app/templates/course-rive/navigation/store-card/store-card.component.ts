@@ -18,7 +18,8 @@ import { RiveSMInput } from 'ng-rive';
           <ion-text class="font-body">{{ section.name }}</ion-text>
         </ion-col>
         <ion-col size="auto" class="ion-align-items-center">
-          <ion-img class="section-img no-invert" [src]="section.logo"></ion-img>
+          <img class="section-img no-invert" [src]="section.logo"
+          fallback-src/>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-between">
