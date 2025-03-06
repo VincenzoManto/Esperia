@@ -12,10 +12,10 @@ import { RiveSMInput } from 'ng-rive';
     <div class="section-container shadow" *ngIf="section">
       <ion-row *ngIf="section">
         <ion-col>
-          <ion-text class="font-title2">{{ section.name }}</ion-text>
+          <ion-text class="font-title2 text-capitalize">{{ section.name | lowercase }}</ion-text>
           <br />
           <div class="spacing"></div>
-          <ion-text class="font-body">{{ section.name }}</ion-text>
+          <ion-text class="font-body text-capitalize opacity-50">{{ section.name | lowercase }}</ion-text>
         </ion-col>
         <ion-col size="auto" class="ion-align-items-center">
           <img class="section-img no-invert" [src]="section.logo"

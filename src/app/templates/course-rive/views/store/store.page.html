@@ -19,7 +19,7 @@
   <div #container class="content-container">
     <ion-img [src]="selectedStore?.logo" class="thumb no-invert"></ion-img>
     <div class="title">
-      <ion-text>{{ selectedStore?.name || 'Design+Code Store' }}
+      <ion-text class="text-capitalize">{{ selectedStore?.name || 'Design+Code Store' | lowercase }}
 
         <button
         class="btn rounded-pill m-auto"
